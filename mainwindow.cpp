@@ -26,9 +26,9 @@ MainWindow::~MainWindow(){
 void MainWindow::on_urlLineEdit_returnPressed(){
 
     QUrl url(ui->urlLineEdit->text());
-    std::cout << "URL: " << ui->urlLineEdit->text().toStdString() << std::endl;
     ui->webView->load(url);
     ui->webView->show();
+    ui->urlLineEdit->setText(ui->webView->url().toString());
 }
 
 /**
@@ -50,6 +50,7 @@ void MainWindow::on_toggleButton_released(){
 // Back button for browser
 void MainWindow::on_backButton_clicked(){
     ui->webView->back();
+    ui->urlLineEdit->setText(ui->webView->url().toString());
 }
 
 // Generate Code upon release
@@ -67,5 +68,19 @@ void MainWindow::on_webView_selectionChanged(){
 
     this->seleniumCode->push(ui->webView->page()->currentFrame()->documentElement().localName().toStdString());
 
-    std::cout << ui->webView->url().toString().toStdString() << std::endl;
+    ui->urlLineEdit->setText(ui->webView->url().toString());
+}
+
+/**
+ * @brief MainWindow::on_webView_loadProgress - Called as the webpage loads
+ *          this provides a progress bar to the user.
+ * @param progress - 0 - 100 value for the progress.
+ */
+void MainWindow::on_webView_loadProgress(int progress){
+    ui->urlLineEdit->setVisible(false);
+    ui->progressBar->setValue(progress);
+    if(progress == 100){
+         ui->urlLineEdit->setVisible(true);
+         ui->urlLineEdit->setText(ui->webView->url().toString());
+    }
 }

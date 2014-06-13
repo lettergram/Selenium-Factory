@@ -33,6 +33,8 @@ private slots:
 
     void on_backButton_clicked();
 
+    void on_webView_loadProgress(int progress);
+
 private:
 
     Ui::MainWindow *ui;
