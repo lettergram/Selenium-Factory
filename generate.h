@@ -12,14 +12,13 @@ public:
 
     /* push and pull objects name in string form */
     void push(std::string);
-    std::string pull();
+    std::string pop();
 
     /* Creates script */
     void create();
 
 private:
 
-    /* TODO: make queue */
     std::queue<std::string> * objects;
 };
 

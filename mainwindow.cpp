@@ -47,19 +47,27 @@ void MainWindow::on_toggleButton_released(){
     }
 }
 
-// Back button for browser
+/**
+ * @brief MainWindow::on_backButton_clicked - Back button for browser,
+ *          reloads the URL in the urlLineEdit
+ */
 void MainWindow::on_backButton_clicked(){
     ui->webView->back();
     ui->urlLineEdit->setText(ui->webView->url().toString());
 }
 
-// Generate Code upon release
+/**
+ * @brief MainWindow::on_genButton_released - Should generate selenium
+ *          code based off the stack of items.
+ */
 void MainWindow::on_genButton_released(){
     this->seleniumCode->create();
 }
 
-// STILL WORK IN PROGRESS
-// Should push the object the user clicks on into the seleniumCode stack.
+/**
+ * @brief MainWindow::on_webView_selectionChanged - Signaled on the selection change,
+ *      CURRENTLY not very useful.
+ */
 void MainWindow::on_webView_selectionChanged(){
 
     if(ui->webView->page()->hasSelection()){
