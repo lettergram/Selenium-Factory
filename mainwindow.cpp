@@ -11,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->webView->show();
 
     this->seleniumCode = new generate();
+    api = new javaScriptHandler(this);
 
     collect = false;
 }
@@ -22,11 +23,40 @@ MainWindow::~MainWindow(){
 /**
  * @brief MainWindow::on_urlLineEdit_returnPressed
  *   - A URL has been inputed and will now load webpage
+ *
+ * Helpful links:
+ *      http://stackoverflow.com/questions/9966760/how-i-get-page-source-from-webview
+ *      http://stackoverflow.com/questions/4975658/qt-qwebview-javascript-callback
+ *      http://stackoverflow.com/questions/2726609/qt-4-6-adding-objects-and-sub-objects-to-qwebview-window-object-c-javascrip
+ *
  */
 void MainWindow::on_urlLineEdit_returnPressed(){
 
     QUrl url(ui->urlLineEdit->text());
     ui->webView->load(url);
+
+    // Still need to figure this out
+    QString javaScript = api->injectJavaScript();
+
+    attachWindowObject();
+    QWebFrame *frame = ui->webView->page()->mainFrame();
+
+    ui->webView->connect(frame,
+            SIGNAL(javaScriptWindowObjectCleared()),
+            this, SLOT(attachWindowObject()));
+
+    ui->webView->connect(api,
+            SIGNAL(win_bar()),
+            this, SLOT(bluesBros()));
+
+    frame->evaluateJavaScript("document.body.innerHTML += 'this is the first test'");
+
+    javaScript += "document.body.innerHTML +=" + javaScript;
+
+    // busy waiting bad
+    for(int i = 0; i != 100; ui->webView->loadProgress(i)){ qDebug() << i; if(i == 0) break;  }
+    frame->evaluateJavaScript(javaScript);
+
     ui->webView->show();
     ui->urlLineEdit->setText(ui->webView->url().toString());
 }
@@ -70,13 +100,24 @@ void MainWindow::on_genButton_released(){
  */
 void MainWindow::on_webView_selectionChanged(){
 
-    if(ui->webView->page()->hasSelection()){
-        std::cout << "Web Element: " << ui->webView->page()->currentFrame()->documentElement().localName().toStdString() << std::endl;
-    }
+
+    QWebFrame *frame = ui->webView->page()->mainFrame();
+    QString html = ui->webView->page()->mainFrame()->toHtml();
+
+    frame->evaluateJavaScript("document.body.innerHTML += 'this is the first test'");
+    std::cout << ui->webView->page()->settings()->JavascriptEnabled << std::endl;
+    QString javaScript = "document.body.innerHTML += 'src='scriptName.js'";// + api->injectJavaScript() + "'";
+    frame->evaluateJavaScript(javaScript);
+
+    std::cout << html.toStdString() << std::endl;
+    std::cout << javaScript.toStdString() << std::endl;
+
+    QVariant f1result = frame->evaluateJavaScript("tester('Selection Changed')");
+    qDebug() << "Selection Changed: " << f1result;
 
     this->seleniumCode->push(ui->webView->page()->currentFrame()->documentElement().localName().toStdString());
-
     ui->urlLineEdit->setText(ui->webView->url().toString());
+
 }
 
 /**
@@ -92,3 +133,24 @@ void MainWindow::on_webView_loadProgress(int progress){
          ui->urlLineEdit->setText(ui->webView->url().toString());
     }
 }
+
+/**
+ * @brief MainWindow::on_refreshButton_released - Refresh Button,
+ *          refreshes the page as you would suspect.
+ */
+void MainWindow::on_refreshButton_released(){
+    on_urlLineEdit_returnPressed();
+}
+
+/**
+ * @brief MainWindow::attachWindowObject - attaches javaScriptHandler object
+ *      to the page mainframe
+ */
+void MainWindow::attachWindowObject(){
+    ui->webView->page()->mainFrame()->addToJavaScriptWindowObject(QString("api"), api);
+}
+
+void MainWindow::bluesBros(){
+        std::cout << "here" << std::endl;
+        qDebug() << "foo and bar are getting the band back together!";
+};

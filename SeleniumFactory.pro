@@ -16,9 +16,14 @@ TEMPLATE = app
 
 SOURCES += main.cpp\
         mainwindow.cpp \
-    generate.cpp
+    generate.cpp \ 
+    testgenerationform.cpp \
+    javascripthandler.cpp
 
 HEADERS  += mainwindow.h \
-    generate.h
+    generate.h \ 
+    testgenerationform.h \
+    javascripthandler.h
 
-FORMS    += mainwindow.ui
+FORMS    += mainwindow.ui \
+    testgenerationform.ui

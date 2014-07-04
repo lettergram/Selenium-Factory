@@ -15,56 +15,22 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="2" column="0" colspan="8">
-     <widget class="QWebView" name="webView">
-      <property name="cursor">
-       <cursorShape>PointingHandCursor</cursorShape>
-      </property>
-      <property name="focusPolicy">
-       <enum>Qt::ClickFocus</enum>
-      </property>
-      <property name="url">
-       <url>
-        <string>about:blank</string>
-       </url>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QPushButton" name="toggleButton">
+    <item row="0" column="4">
+     <widget class="QProgressBar" name="progressBar">
       <property name="minimumSize">
        <size>
-        <width>80</width>
+        <width>0</width>
         <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>80</width>
+        <width>16777215</width>
         <height>16777215</height>
        </size>
       </property>
-      <property name="text">
-       <string>Start</string>
-      </property>
-     </widget>
-    </item>
-    <item row="0" column="0">
-     <widget class="QPushButton" name="genButton">
-      <property name="minimumSize">
-       <size>
-        <width>80</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="maximumSize">
-       <size>
-        <width>80</width>
-        <height>16777215</height>
-       </size>
-      </property>
-      <property name="text">
-       <string>Generate</string>
+      <property name="value">
+       <number>0</number>
       </property>
      </widget>
     </item>
@@ -87,29 +53,76 @@
       </property>
      </widget>
     </item>
-    <item row="0" column="3">
-     <widget class="QProgressBar" name="progressBar">
+    <item row="0" column="0">
+     <widget class="QPushButton" name="genButton">
       <property name="minimumSize">
        <size>
-        <width>0</width>
+        <width>80</width>
         <height>0</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>16777215</width>
+        <width>80</width>
         <height>16777215</height>
        </size>
       </property>
-      <property name="value">
-       <number>0</number>
+      <property name="text">
+       <string>Generate</string>
       </property>
      </widget>
     </item>
-    <item row="0" column="3">
+    <item row="0" column="1">
+     <widget class="QPushButton" name="toggleButton">
+      <property name="minimumSize">
+       <size>
+        <width>80</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>80</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Start</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="0" colspan="9">
+     <widget class="QWebView" name="webView">
+      <property name="cursor">
+       <cursorShape>PointingHandCursor</cursorShape>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::ClickFocus</enum>
+      </property>
+      <property name="url">
+       <url>
+        <string>about:blank</string>
+       </url>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="4" colspan="3">
      <widget class="QLineEdit" name="urlLineEdit">
       <property name="text">
        <string>http://google.com</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="8">
+     <widget class="QPushButton" name="refreshButton">
+      <property name="maximumSize">
+       <size>
+        <width>70</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string>Refresh</string>
       </property>
      </widget>
     </item>

@@ -9,9 +9,10 @@
 #include <iostream>
 
 #include "generate.h"
+#include "javascripthandler.h"
 
 namespace Ui {
-class MainWindow;
+    class MainWindow;
 }
 
 class MainWindow : public QMainWindow
@@ -35,12 +36,19 @@ private slots:
 
     void on_webView_loadProgress(int progress);
 
+    void on_refreshButton_released();
+
+    void attachWindowObject();
+    void bluesBros();
+
+
 private:
 
     Ui::MainWindow *ui;
     bool collect;
 
     generate * seleniumCode;
+    javaScriptHandler * api;
 
 };
 
