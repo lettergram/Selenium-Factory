@@ -1,54 +1,47 @@
 #include "javascripthandler.h"
 #include <QDebug>
 
-javaScriptHandler::javaScriptHandler(QObject *parent) :
-    QObject(parent){
-
+/**
+ * @brief javaScriptHandler::javaScriptHandler - generic consctructor for
+ *          the javaScriptHandler class
+ */
+javaScriptHandler::javaScriptHandler(){
+    // Nothing
 }
-
-void javaScriptHandler::os_foo(){
-        qDebug() << "foo called, it want's it's bar back";
-};
 
 /**
  * @brief javaScriptHandler::injectJavaScript - Returns string of java script
  *          to inject into the web page. Used for callback functions.
  * @return string of java script to inject
  */
-const QString javaScriptHandler::injectJavaScript(){
+void javaScriptHandler::injectJavaScript(QWebFrame *frame){
 
     QString javaScript;
 
-//    javaScript =  "'<br>Testing<br> <script>document.onclick = alert('a');\\\ndocument.onclick = alert('b');</script>'";
-    //javaScript += ""
-    //javaScript += "function tester (str) { alert(str); return 'function call'; }\\n";
+    javaScript = "function clickHandler(e){";
+    javaScript += "var alertString, elem, evt = e ? e:event;";
+    javaScript += "if (evt.srcElement) {";
+    javaScript += "elem = evt.srcElement;";
+    javaScript += "}else if (evt.target) {";
+    javaScript += "elem = evt.target;";
+    javaScript += "}";
+    javaScript += "alertString = 'Tag=<'+ elem.tagName + '>';";
+    javaScript += "if(elem.hasAttribute('id')) {";
+    javaScript += "alertString += '\\nId=' + elem.getAttribute('id');";
+    javaScript += "}";
+    javaScript += "if(elem.hasAttribute('class')) {";
+    javaScript += "alertString += '\\nClass=' + elem.getAttribute('class');";
+    javaScript += "}";
+    javaScript += "if(elem.hasAttribute('name')) {";
+    javaScript += "alertString += '\\nName=' + elem.getAttribute('name');";
+    javaScript += "}";
+    javaScript += "alert(alertString);";
+    javaScript += "return true;";
+    javaScript += "}";
+    javaScript += "function init() {";
+    javaScript += "document.onclick = clickHandler;";
+    javaScript += "}";
 
-
-    javaScript = "<script>function clickHandler(e){\\n";
-    javaScript += "\\t'use strict';\\n";
-    javaScript += "\\tvar alertString, elem, evt = e ? e:event;\\n";
-    javaScript += "\\tif (evt.srcElement) {\\n";
-    javaScript += "\\t\\telem = evt.srcElement;\\n";
-    javaScript += "\\t}else if (evt.target) {\\n";
-    javaScript += "\\t\\telem = evt.target;\\n";
-    javaScript += "\\t}\\n\\n";
-    javaScript += "\\talertString = 'Tag=<'+ elem.tagName + '>';\\n";
-    javaScript += "\\tif(elem.hasAttribute('id')) {\\n";
-    javaScript += "\\t\\talertString += '\\\\nId=' + elem.getAttribute('id');\\n";
-    javaScript += "\\t}\\n";
-    javaScript += "\\tif(elem.hasAttribute('class')) {\\n";
-    javaScript += "\\t\\talertString += '\\\\nClass=' + elem.getAttribute('class');\\n";
-    javaScript += "\\t}\\n";
-    javaScript += "\\tif(elem.hasAttribute('name')) {\\n";
-    javaScript += "\\t\\talertString += '\\\\nName=' + elem.getAttribute('name');\\n";
-    javaScript += "\\t}\\n";
-    javaScript += "\\talert(alertString);\\n";
-    javaScript += "\\t\\treturn true;\\n";
-    javaScript += "}\\n\\n";
-    javaScript += "function init() {\\n";
-    javaScript += "\\talert('hello');\\n";
-    //javaScript += "\\tdocument.onclick = clickHandler;\\n";
-    javaScript += "}\\n</script>";
-
-    return javaScript;
+    frame->evaluateJavaScript(javaScript);
+    frame->evaluateJavaScript("init()");
 }

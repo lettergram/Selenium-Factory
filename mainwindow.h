@@ -38,9 +38,6 @@ private slots:
 
     void on_refreshButton_released();
 
-    void attachWindowObject();
-    void bluesBros();
-
 
 private:
 

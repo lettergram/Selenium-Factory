@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->webView->show();
 
     this->seleniumCode = new generate();
-    api = new javaScriptHandler(this);
+    api = new javaScriptHandler();
 
     collect = false;
 }
@@ -35,28 +35,8 @@ void MainWindow::on_urlLineEdit_returnPressed(){
     QUrl url(ui->urlLineEdit->text());
     ui->webView->load(url);
 
-    // Still need to figure this out
-    QString javaScript = api->injectJavaScript();
-
-    attachWindowObject();
-    QWebFrame *frame = ui->webView->page()->mainFrame();
-
-    ui->webView->connect(frame,
-            SIGNAL(javaScriptWindowObjectCleared()),
-            this, SLOT(attachWindowObject()));
-
-    ui->webView->connect(api,
-            SIGNAL(win_bar()),
-            this, SLOT(bluesBros()));
-
-    frame->evaluateJavaScript("document.body.innerHTML += 'this is the first test'");
-
-    javaScript += "document.body.innerHTML +=" + javaScript;
-
-    // busy waiting bad
     for(int i = 0; i != 100; ui->webView->loadProgress(i)){ qDebug() << i; if(i == 0) break;  }
 
-    frame->evaluateJavaScript("document.body.innerHTML += \"hahaha\";");
     ui->webView->show();
 
     ui->urlLineEdit->setText(ui->webView->url().toString());
@@ -105,14 +85,6 @@ void MainWindow::on_webView_selectionChanged(){
     QWebFrame *frame = ui->webView->page()->mainFrame();
     QString html = ui->webView->page()->mainFrame()->toHtml();
 
-    frame->evaluateJavaScript("init()");
-
-    std::cout << html.toStdString() << std::endl;
-    //std::cout << javaScript.toStdString() << std::endl;
-
-    // QVariant f1result = frame->evaluateJavaScript("tester('Selection Changed')");
-    // qDebug() << "Selection Changed: " << f1result;
-
     this->seleniumCode->push(ui->webView->page()->currentFrame()->documentElement().localName().toStdString());
     ui->urlLineEdit->setText(ui->webView->url().toString());
 
@@ -124,12 +96,15 @@ void MainWindow::on_webView_selectionChanged(){
  * @param progress - 0 - 100 value for the progress.
  */
 void MainWindow::on_webView_loadProgress(int progress){
+
     ui->urlLineEdit->setVisible(false);
     ui->progressBar->setValue(progress);
+
     if(progress == 100){
+
          QWebFrame *frame = ui->webView->page()->mainFrame();
-         QString injection = api->injectJavaScript();
-         frame->evaluateJavaScript("document.body.innerHTML += \"" + injection + "\";");
+         api->injectJavaScript(frame);
+
          ui->urlLineEdit->setVisible(true);
          ui->urlLineEdit->setText(ui->webView->url().toString());
     }
@@ -142,16 +117,3 @@ void MainWindow::on_webView_loadProgress(int progress){
 void MainWindow::on_refreshButton_released(){
     on_urlLineEdit_returnPressed();
 }
-
-/**
- * @brief MainWindow::attachWindowObject - attaches javaScriptHandler object
- *      to the page mainframe
- */
-void MainWindow::attachWindowObject(){
-    ui->webView->page()->mainFrame()->addToJavaScriptWindowObject(QString("api"), api);
-}
-
-void MainWindow::bluesBros(){
-        std::cout << "here" << std::endl;
-        qDebug() << "foo and bar are getting the band back together!";
-};

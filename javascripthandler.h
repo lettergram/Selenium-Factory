@@ -1,23 +1,13 @@
 #ifndef JAVASCRIPTHANDLER_H
 #define JAVASCRIPTHANDLER_H
 
-#include <QObject>
+#include <QWebFrame>
 
-class javaScriptHandler : public QObject
-{
-        Q_OBJECT
+class javaScriptHandler {
 
 public:
-        javaScriptHandler(QObject *parent);
-
-public slots:
-        void os_foo();
-
-signals:
-        void win_bar();
-
-public:
-        const QString injectJavaScript();
+        javaScriptHandler();
+        void injectJavaScript(QWebFrame *);
 
 };
 
