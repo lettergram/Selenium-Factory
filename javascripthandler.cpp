@@ -6,19 +6,8 @@
  *          the javaScriptHandler class
  */
 javaScriptHandler::javaScriptHandler(){
-    // Nothing
-}
 
-/**
- * @brief javaScriptHandler::injectJavaScript - Returns string of java script
- *          to inject into the web page. Used for callback functions.
- * @return string of java script to inject
- */
-void javaScriptHandler::injectJavaScript(QWebFrame *frame){
-
-    QString javaScript;
-
-    javaScript = "function clickHandler(e){";
+    QString javaScript = "function clickHandler(e){";
     javaScript += "var alertString, elem, evt = e ? e:event;";
     javaScript += "if (evt.srcElement) {";
     javaScript += "elem = evt.srcElement;";
@@ -42,6 +31,16 @@ void javaScriptHandler::injectJavaScript(QWebFrame *frame){
     javaScript += "document.onclick = clickHandler;";
     javaScript += "}";
 
-    frame->evaluateJavaScript(javaScript);
+    webElementIdentification = new QString(javaScript);
+}
+
+/**
+ * @brief javaScriptHandler::injectJavaScript - Returns string of java script
+ *          to inject into the web page. Used for callback functions.
+ * @return string of java script to inject
+ */
+void javaScriptHandler::injectJavaScript(QWebFrame *frame){
+
+    frame->evaluateJavaScript(*webElementIdentification);
     frame->evaluateJavaScript("init()");
 }

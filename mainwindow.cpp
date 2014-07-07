@@ -27,8 +27,6 @@ MainWindow::~MainWindow(){
  * Helpful links:
  *      http://stackoverflow.com/questions/9966760/how-i-get-page-source-from-webview
  *      http://stackoverflow.com/questions/4975658/qt-qwebview-javascript-callback
- *      http://stackoverflow.com/questions/2726609/qt-4-6-adding-objects-and-sub-objects-to-qwebview-window-object-c-javascrip
- *
  */
 void MainWindow::on_urlLineEdit_returnPressed(){
 
@@ -36,9 +34,7 @@ void MainWindow::on_urlLineEdit_returnPressed(){
     ui->webView->load(url);
 
     for(int i = 0; i != 100; ui->webView->loadProgress(i)){ qDebug() << i; if(i == 0) break;  }
-
     ui->webView->show();
-
     ui->urlLineEdit->setText(ui->webView->url().toString());
 }
 
@@ -81,8 +77,6 @@ void MainWindow::on_genButton_released(){
  */
 void MainWindow::on_webView_selectionChanged(){
 
-
-    QWebFrame *frame = ui->webView->page()->mainFrame();
     QString html = ui->webView->page()->mainFrame()->toHtml();
 
     this->seleniumCode->push(ui->webView->page()->currentFrame()->documentElement().localName().toStdString());
@@ -102,8 +96,7 @@ void MainWindow::on_webView_loadProgress(int progress){
 
     if(progress == 100){
 
-         QWebFrame *frame = ui->webView->page()->mainFrame();
-         api->injectJavaScript(frame);
+         api->injectJavaScript(ui->webView->page()->mainFrame());
 
          ui->urlLineEdit->setVisible(true);
          ui->urlLineEdit->setText(ui->webView->url().toString());
