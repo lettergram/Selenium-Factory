@@ -55,9 +55,10 @@ void MainWindow::on_urlLineEdit_returnPressed(){
 
     // busy waiting bad
     for(int i = 0; i != 100; ui->webView->loadProgress(i)){ qDebug() << i; if(i == 0) break;  }
-    frame->evaluateJavaScript(javaScript);
 
+    frame->evaluateJavaScript("document.body.innerHTML += \"hahaha\";");
     ui->webView->show();
+
     ui->urlLineEdit->setText(ui->webView->url().toString());
 }
 
@@ -104,16 +105,13 @@ void MainWindow::on_webView_selectionChanged(){
     QWebFrame *frame = ui->webView->page()->mainFrame();
     QString html = ui->webView->page()->mainFrame()->toHtml();
 
-    frame->evaluateJavaScript("document.body.innerHTML += 'this is the first test'");
-    std::cout << ui->webView->page()->settings()->JavascriptEnabled << std::endl;
-    QString javaScript = "document.body.innerHTML += 'src='scriptName.js'";// + api->injectJavaScript() + "'";
-    frame->evaluateJavaScript(javaScript);
+    frame->evaluateJavaScript("init()");
 
     std::cout << html.toStdString() << std::endl;
-    std::cout << javaScript.toStdString() << std::endl;
+    //std::cout << javaScript.toStdString() << std::endl;
 
-    QVariant f1result = frame->evaluateJavaScript("tester('Selection Changed')");
-    qDebug() << "Selection Changed: " << f1result;
+    // QVariant f1result = frame->evaluateJavaScript("tester('Selection Changed')");
+    // qDebug() << "Selection Changed: " << f1result;
 
     this->seleniumCode->push(ui->webView->page()->currentFrame()->documentElement().localName().toStdString());
     ui->urlLineEdit->setText(ui->webView->url().toString());
@@ -129,6 +127,9 @@ void MainWindow::on_webView_loadProgress(int progress){
     ui->urlLineEdit->setVisible(false);
     ui->progressBar->setValue(progress);
     if(progress == 100){
+         QWebFrame *frame = ui->webView->page()->mainFrame();
+         QString injection = api->injectJavaScript();
+         frame->evaluateJavaScript("document.body.innerHTML += \"" + injection + "\";");
          ui->urlLineEdit->setVisible(true);
          ui->urlLineEdit->setText(ui->webView->url().toString());
     }

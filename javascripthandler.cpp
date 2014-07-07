@@ -19,34 +19,36 @@ const QString javaScriptHandler::injectJavaScript(){
 
     QString javaScript;
 
-    javaScript =  "'<br>Testing<br> <script>alert('a');</script>'";
-    //javaScript += "function tester (str) { alert(str); return 'function call'; }\n";
+//    javaScript =  "'<br>Testing<br> <script>document.onclick = alert('a');\\\ndocument.onclick = alert('b');</script>'";
+    //javaScript += ""
+    //javaScript += "function tester (str) { alert(str); return 'function call'; }\\n";
 
-/*
-    javaScript += "function clickHandler(e){\n";
-    javaScript += "\t'use strict';\n";
-    javaScript += "\tvar alertString, elem, evt = e ? e:event;\n";
-    javaScript += "\tif (evt.srcElement) {\n";
-    javaScript += "\t\telem = evt.srcElement;\n";
-    javaScript += "\t}else if (evt.target) {\n";
-    javaScript += "\t\telem = evt.target;\n";
-    javaScript += "\t}\n\n";
-    javaScript += "\talertString = 'Tag=<'+ elem.tagName + '>';\n";
-    javaScript += "\tif(elem.hasAttribute('id;)) {\n";
-    javaScript += "\t\talertString += '\nId=' + elem.getAttribute('id');\n";
-    javaScript += "\t}\n";
-    javaScript += "\tif(elem.hasAttribute('class')) {\n";
-    javaScript += "\t\talertString += '\nClass=' + elem.getAttribute('class');\n";
-    javaScript += "\t}\n";
-    javaScript += "\tif(elem.hasAttribute('name')) {\n";
-    javaScript += "\t\talertString += '\nName='' + elem.getAttribute('name');\n";
-    javaScript += "\t}\n";
-    javaScript += "\talert(alertString);\n";
-    javaScript += "\t\treturn true;\n";
-    javaScript += "}\n\n";
-    javaScript += "function init() {\n'use strict';\n";
-    javaScript += "\tdocument.onclick = clickHandler;\n";
-    javaScript += "}\n";
-*/
+
+    javaScript = "<script>function clickHandler(e){\\n";
+    javaScript += "\\t'use strict';\\n";
+    javaScript += "\\tvar alertString, elem, evt = e ? e:event;\\n";
+    javaScript += "\\tif (evt.srcElement) {\\n";
+    javaScript += "\\t\\telem = evt.srcElement;\\n";
+    javaScript += "\\t}else if (evt.target) {\\n";
+    javaScript += "\\t\\telem = evt.target;\\n";
+    javaScript += "\\t}\\n\\n";
+    javaScript += "\\talertString = 'Tag=<'+ elem.tagName + '>';\\n";
+    javaScript += "\\tif(elem.hasAttribute('id')) {\\n";
+    javaScript += "\\t\\talertString += '\\\\nId=' + elem.getAttribute('id');\\n";
+    javaScript += "\\t}\\n";
+    javaScript += "\\tif(elem.hasAttribute('class')) {\\n";
+    javaScript += "\\t\\talertString += '\\\\nClass=' + elem.getAttribute('class');\\n";
+    javaScript += "\\t}\\n";
+    javaScript += "\\tif(elem.hasAttribute('name')) {\\n";
+    javaScript += "\\t\\talertString += '\\\\nName=' + elem.getAttribute('name');\\n";
+    javaScript += "\\t}\\n";
+    javaScript += "\\talert(alertString);\\n";
+    javaScript += "\\t\\treturn true;\\n";
+    javaScript += "}\\n\\n";
+    javaScript += "function init() {\\n";
+    javaScript += "\\talert('hello');\\n";
+    //javaScript += "\\tdocument.onclick = clickHandler;\\n";
+    javaScript += "}\\n</script>";
+
     return javaScript;
 }
