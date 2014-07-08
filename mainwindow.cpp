@@ -10,7 +10,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->webView->load(QUrl("http://www.google.com"));
     ui->webView->show();
 
-    this->seleniumCode = new generate();
     api = new javaScriptHandler();
 
     collect = false;
@@ -68,7 +67,7 @@ void MainWindow::on_backButton_clicked(){
  *          code based off the stack of items.
  */
 void MainWindow::on_genButton_released(){
-    this->seleniumCode->create();
+    // Call api
 }
 
 /**
@@ -79,9 +78,7 @@ void MainWindow::on_webView_selectionChanged(){
 
     QString html = ui->webView->page()->mainFrame()->toHtml();
 
-    this->seleniumCode->push(ui->webView->page()->currentFrame()->documentElement().localName().toStdString());
     ui->urlLineEdit->setText(ui->webView->url().toString());
-
 }
 
 /**
@@ -96,10 +93,11 @@ void MainWindow::on_webView_loadProgress(int progress){
 
     if(progress == 100){
 
-         api->injectJavaScript(ui->webView->page()->mainFrame());
+        ui->webView->page()->mainFrame()->addToJavaScriptWindowObject("bridgeOperations", api);
+        api->injectJavaScript(ui->webView->page()->mainFrame());
 
-         ui->urlLineEdit->setVisible(true);
-         ui->urlLineEdit->setText(ui->webView->url().toString());
+        ui->urlLineEdit->setVisible(true);
+        ui->urlLineEdit->setText(ui->webView->url().toString());
     }
 }
 

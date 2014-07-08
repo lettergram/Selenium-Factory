@@ -7,6 +7,8 @@
  */
 javaScriptHandler::javaScriptHandler(){
 
+    userActionList = new Generate();
+
     QString javaScript = "function clickHandler(e){";
     javaScript += "var alertString, elem, evt = e ? e:event;";
     javaScript += "if (evt.srcElement) {";
@@ -24,7 +26,7 @@ javaScriptHandler::javaScriptHandler(){
     javaScript += "if(elem.hasAttribute('name')) {";
     javaScript += "alertString += '\\nName=' + elem.getAttribute('name');";
     javaScript += "}";
-    javaScript += "alert(alertString);";
+    javaScript += "bridgeOperations.webElement(alertString);";
     javaScript += "return true;";
     javaScript += "}";
     javaScript += "function init() {";
@@ -43,4 +45,15 @@ void javaScriptHandler::injectJavaScript(QWebFrame *frame){
 
     frame->evaluateJavaScript(*webElementIdentification);
     frame->evaluateJavaScript("init()");
+}
+
+/**
+ * @brief javaScriptHandler::webElement - Called when by
+ *          the javascript when a web element is selected
+ *
+ * @param element - QString containing the characteristics of the
+ *                  web element
+ */
+void javaScriptHandler::webElement(QString element){
+    userActionList->push(element.toStdString());
 }

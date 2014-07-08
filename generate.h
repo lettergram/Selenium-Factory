@@ -3,12 +3,13 @@
 
 #include <string>
 #include <queue>
+#include <iostream>
 
-class generate{
+class Generate{
 
 public:
 
-    generate();
+    Generate();
 
     /* push and pull objects name in string form */
     void push(std::string);

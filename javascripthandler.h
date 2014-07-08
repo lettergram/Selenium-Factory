@@ -4,15 +4,21 @@
 #include <QWebFrame>
 #include <QString>
 
-class javaScriptHandler {
+#include "generate.h"
+
+class javaScriptHandler : public QObject {
+    Q_OBJECT
+
+public slots:
+    Q_INVOKABLE void webElement(QString str);
 
 public:
-        javaScriptHandler();
-        void injectJavaScript(QWebFrame *);
+    javaScriptHandler();
+    void injectJavaScript(QWebFrame *);
 
 private:
-
-        QString * webElementIdentification;
+    QString * webElementIdentification;
+    Generate * userActionList;
 
 };
 

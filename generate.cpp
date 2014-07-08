@@ -1,7 +1,7 @@
 #include "generate.h"
 
-generate::generate(){
-    this->objects = new std::queue<std::string>;
+Generate::Generate(){
+    objects = new std::queue<std::string>;
 }
 
 /**
@@ -10,8 +10,10 @@ generate::generate(){
  * @param obj - std (standard C) string -
  *          should be webElements name.
  */
-void generate::push(std::string obj){
-    this->objects->push(obj);
+void Generate::push(std::string obj){
+    std::cout << "Size: " << objects->size() << std::endl;
+    std::cout << "Pushing:\n" << obj << std::endl;
+    objects->push(obj);
 }
 
 /**
@@ -19,17 +21,20 @@ void generate::push(std::string obj){
  *      top of the queue.
  * @return std (standard C) string
  */
-std::string generate::pop(){
-    std::string obj = this->objects->front();
-    this->objects->pop();
+std::string Generate::pop(){
+    std::string obj = objects->front();
+    objects->pop();
     return obj;
 }
 
 /**
  * === TODO ===
  * @brief generate::create - Creates
- *      or generates the selenium code
+ *      or generates the selenium code,
+ *      currently just prints it.
  */
-void generate::create(){
-
+void Generate::create(){
+    while(objects->size() > 0){
+        std::cout << this->pop() << std::endl;
+    }
 }
