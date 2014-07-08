@@ -90,12 +90,10 @@ void MainWindow::on_webView_loadProgress(int progress){
 
     ui->urlLineEdit->setVisible(false);
     ui->progressBar->setValue(progress);
-    QWebFrame * frame= ui->webView->page()->mainFrame();
 
     if(progress == 100){
 
-        frame->addToJavaScriptWindowObject("bridgeOperations", api);
-        api->injectJavaScript(frame);
+        api->injectJavaScript(ui->webView->page()->mainFrame());
 
         ui->urlLineEdit->setVisible(true);
         ui->urlLineEdit->setText(ui->webView->url().toString());

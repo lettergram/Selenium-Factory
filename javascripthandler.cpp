@@ -43,6 +43,7 @@ javaScriptHandler::javaScriptHandler(){
  */
 void javaScriptHandler::injectJavaScript(QWebFrame *frame){
 
+    frame->addToJavaScriptWindowObject("bridgeOperations", this);
     frame->evaluateJavaScript(*webElementIdentification);
     frame->evaluateJavaScript("init()");
 }
