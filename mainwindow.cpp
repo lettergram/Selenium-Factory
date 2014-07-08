@@ -67,7 +67,7 @@ void MainWindow::on_backButton_clicked(){
  *          code based off the stack of items.
  */
 void MainWindow::on_genButton_released(){
-    // Call api
+    api->outPutUserActions()->create();
 }
 
 /**
@@ -90,11 +90,12 @@ void MainWindow::on_webView_loadProgress(int progress){
 
     ui->urlLineEdit->setVisible(false);
     ui->progressBar->setValue(progress);
+    QWebFrame * frame= ui->webView->page()->mainFrame();
 
     if(progress == 100){
 
-        ui->webView->page()->mainFrame()->addToJavaScriptWindowObject("bridgeOperations", api);
-        api->injectJavaScript(ui->webView->page()->mainFrame());
+        frame->addToJavaScriptWindowObject("bridgeOperations", api);
+        api->injectJavaScript(frame);
 
         ui->urlLineEdit->setVisible(true);
         ui->urlLineEdit->setText(ui->webView->url().toString());

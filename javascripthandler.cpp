@@ -57,3 +57,11 @@ void javaScriptHandler::injectJavaScript(QWebFrame *frame){
 void javaScriptHandler::webElement(QString element){
     userActionList->push(element.toStdString());
 }
+
+/**
+ * @brief javaScriptHandler::outPutUserActions - returns
+ * @return
+ */
+Generate * javaScriptHandler::outPutUserActions(){
+    return userActionList;
+}

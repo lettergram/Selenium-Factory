@@ -34,6 +34,7 @@ std::string Generate::pop(){
  *      currently just prints it.
  */
 void Generate::create(){
+    std::cout << "creating!\n---------------------\n\n" << std::endl;
     while(objects->size() > 0){
         std::cout << this->pop() << std::endl;
     }
