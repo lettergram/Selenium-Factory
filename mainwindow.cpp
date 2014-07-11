@@ -10,7 +10,8 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->webView->load(QUrl("http://www.google.com"));
     ui->webView->show();
 
-    api = new javaScriptHandler();
+    gen = new Generate();
+    api = new javaScriptHandler(gen);
 
     collect = false;
 }
@@ -67,7 +68,9 @@ void MainWindow::on_backButton_clicked(){
  *          code based off the stack of items.
  */
 void MainWindow::on_genButton_released(){
-    api->outPutUserActions()->create();
+    QDir dir;
+    while(!dir.cd("Scripts")){ dir.cdUp(); }
+    api->outPutUserActions()->create(dir.path().toStdString(), "seleniumFunc.py");
 }
 
 /**
@@ -77,7 +80,6 @@ void MainWindow::on_genButton_released(){
 void MainWindow::on_webView_selectionChanged(){
 
     QString html = ui->webView->page()->mainFrame()->toHtml();
-
     ui->urlLineEdit->setText(ui->webView->url().toString());
 }
 
@@ -94,10 +96,12 @@ void MainWindow::on_webView_loadProgress(int progress){
     if(progress == 100){
 
         api->injectJavaScript(ui->webView->page()->mainFrame());
+        gen->push(ui->webView->url().toString().toStdString());
 
         ui->urlLineEdit->setVisible(true);
         ui->urlLineEdit->setText(ui->webView->url().toString());
     }
+
 }
 
 /**
@@ -106,4 +110,11 @@ void MainWindow::on_webView_loadProgress(int progress){
  */
 void MainWindow::on_refreshButton_released(){
     on_urlLineEdit_returnPressed();
+}
+
+void MainWindow::on_toolButton_clicked(){
+
+    testGenerationForm * testGenForm = new testGenerationForm();
+    testGenForm->show();
+
 }

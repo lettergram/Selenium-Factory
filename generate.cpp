@@ -28,14 +28,33 @@ std::string Generate::pop(){
 }
 
 /**
- * === TODO ===
- * @brief generate::create - Creates
- *      or generates the selenium code,
- *      currently just prints it.
+ * NOT FULLY FUNCTIONAL
+ * @brief generate::create - Genereates .csv
+ *          file containing the characteristics of user selected
+ *          web elements. Then it runs the script designated by fileName
+ *          in the directory dir, which should genereate selenium code
+ *          based off the the .csv.
  */
-void Generate::create(){
+void Generate::create(std::string dir, std::string fileName){
+
+    std::cout << dir + "/" + fileName << "\n" << std::endl;
+
+    std::fstream file;
+    std::string name = dir + "/webElement.csv";
+    file.open(name.c_str(), std::ios_base::out);
+
+    if(file.is_open())
+        std::cout << "Successfully Opened File!\n" << std::endl;
+    else
+        std::cout << "Failed to Open File!\n" << std::endl;
+
     std::cout << "creating!\n---------------------\n\n" << std::endl;
     while(objects->size() > 0){
-        std::cout << this->pop() << std::endl;
+         std::string webElement = this->pop();
+
+         file << webElement << std::endl;
+         std::cout << webElement << std::endl;
     }
+
+    file.close();
 }

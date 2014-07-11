@@ -1,9 +1,13 @@
 #ifndef GENERATE_H
 #define GENERATE_H
 
+#include <stdio.h>
+#include <string.h>
+
 #include <string>
 #include <queue>
 #include <iostream>
+#include <fstream>
 
 class Generate{
 
@@ -16,7 +20,7 @@ public:
     std::string pop();
 
     /* Creates script */
-    void create();
+    void create(std::string, std::string);
 
 private:
 

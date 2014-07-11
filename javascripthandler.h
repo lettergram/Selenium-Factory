@@ -15,7 +15,7 @@ public slots:
 
 public:
 
-    javaScriptHandler();
+    javaScriptHandler(Generate *);
     void injectJavaScript(QWebFrame *);
     Generate * outPutUserActions();
 

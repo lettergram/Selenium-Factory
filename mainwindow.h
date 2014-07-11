@@ -5,11 +5,13 @@
 #include <QUrl>
 #include <QWebFrame>
 #include <QtWebKitWidgets/QWebView>
+#include <QDir>
 
 #include <iostream>
 
 #include "generate.h"
 #include "javascripthandler.h"
+#include "testgenerationform.h"
 
 namespace Ui {
     class MainWindow;
@@ -38,13 +40,15 @@ private slots:
     void on_refreshButton_released();
 
 
+    void on_toolButton_clicked();
+
 private:
 
     Ui::MainWindow *ui;
     bool collect;
 
     javaScriptHandler * api;
-
+    Generate * gen;
 };
 
 #endif // MAINWINDOW_H

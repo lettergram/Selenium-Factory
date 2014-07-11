@@ -4,10 +4,12 @@
 /**
  * @brief javaScriptHandler::javaScriptHandler - generic consctructor for
  *          the javaScriptHandler class
+ *
+ *         Web Element order for CSV: TAG, id, class, name
  */
-javaScriptHandler::javaScriptHandler(){
+javaScriptHandler::javaScriptHandler(Generate * gen){
 
-    userActionList = new Generate();
+    userActionList = gen;
 
     QString javaScript = "function clickHandler(e){";
     javaScript += "var alertString, elem, evt = e ? e:event;";
@@ -16,15 +18,18 @@ javaScriptHandler::javaScriptHandler(){
     javaScript += "}else if (evt.target) {";
     javaScript += "elem = evt.target;";
     javaScript += "}";
-    javaScript += "alertString = 'Tag=<'+ elem.tagName + '>';";
+    javaScript += "alertString = elem.tagName;";
+    javaScript += "alertString += ', ';";
     javaScript += "if(elem.hasAttribute('id')) {";
-    javaScript += "alertString += '\\nId=' + elem.getAttribute('id');";
+    javaScript += "alertString += elem.getAttribute('id');";
     javaScript += "}";
+    javaScript += "alertString += ', ';";
     javaScript += "if(elem.hasAttribute('class')) {";
-    javaScript += "alertString += '\\nClass=' + elem.getAttribute('class');";
+    javaScript += "alertString += elem.getAttribute('class');";
     javaScript += "}";
+    javaScript += "alertString += ', ';";
     javaScript += "if(elem.hasAttribute('name')) {";
-    javaScript += "alertString += '\\nName=' + elem.getAttribute('name');";
+    javaScript += "alertString += elem.getAttribute('name');";
     javaScript += "}";
     javaScript += "bridgeOperations.webElement(alertString);";
     javaScript += "return true;";
