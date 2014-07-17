@@ -96,7 +96,8 @@ void MainWindow::on_webView_loadProgress(int progress){
     if(progress == 100){
 
         api->injectJavaScript(ui->webView->page()->mainFrame());
-        gen->push(ui->webView->url().toString().toStdString());
+
+        gen->push(ui->webView->url().toString().toStdString()); // maybe should be somewhere else
 
         ui->urlLineEdit->setVisible(true);
         ui->urlLineEdit->setText(ui->webView->url().toString());
