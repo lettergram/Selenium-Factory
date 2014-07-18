@@ -1,0 +1,29 @@
+#-------------------------------------------------
+#
+# Project created by QtCreator 2014-06-06T17:51:40
+#
+#-------------------------------------------------
+
+QT += core gui
+QT += webkitwidgets
+QT += webkit
+
+greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
+
+TARGET = SeleniumFactory
+TEMPLATE = app
+
+
+SOURCES += main.cpp\
+           browser/mainwindow.cpp \
+           browser/generate.cpp \ 
+           testGen/testgenerationform.cpp \
+           browser/javascripthandler.cpp
+
+HEADERS  += browser/mainwindow.h \
+            browser/generate.h \ 
+            testGen/testgenerationform.h \
+            browser/javascripthandler.h
+
+FORMS    += browser/mainwindow.ui \
+            testGen/testgenerationform.ui
