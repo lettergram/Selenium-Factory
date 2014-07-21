@@ -49,6 +49,7 @@ private:
 
     javaScriptHandler * api;
     Generate * gen;
+    testGenerationForm * testGenForm;
 };
 
 #endif // MAINWINDOW_H

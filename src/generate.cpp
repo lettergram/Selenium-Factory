@@ -37,6 +37,8 @@ std::string Generate::pop(){
  */
 void Generate::create(std::string dir, std::string fileName){
 
+    std::cout << "Creating CSV Document\n" << std::endl;
+
     std::cout << dir + "/" + fileName << "\n" << std::endl;
 
     std::fstream file;

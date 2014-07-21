@@ -12,6 +12,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     gen = new Generate();
     api = new javaScriptHandler(gen);
+    testGenForm = new testGenerationForm();
 
     collect = false;
 }
@@ -68,6 +69,9 @@ void MainWindow::on_backButton_clicked(){
  *          code based off the stack of items.
  */
 void MainWindow::on_genButton_released(){
+
+    testGenForm->show();
+
     QDir dir;
     while(!dir.cd("Scripts")){ dir.cdUp(); }
     api->outPutUserActions()->create(dir.path().toStdString(), "seleniumFunc.py");
@@ -114,8 +118,5 @@ void MainWindow::on_refreshButton_released(){
 }
 
 void MainWindow::on_toolButton_clicked(){
-
-    testGenerationForm * testGenForm = new testGenerationForm();
     testGenForm->show();
-
 }

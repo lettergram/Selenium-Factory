@@ -1,15 +1,14 @@
 #include "testgenerationform.h"
 #include "ui_testgenerationform.h"
+#include <iostream>
 
 testGenerationForm::testGenerationForm(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::testGenerationForm){
-
     ui->setupUi(this);
 }
 
 testGenerationForm::~testGenerationForm(){
-
     delete ui;
 }
 
@@ -28,6 +27,37 @@ testGenerationForm::~testGenerationForm(){
  *          them to the test location. Hopefully, the database will be full of similar tests.
  *          As well as other tests they may run in the future, allowing them to save time.
  */
-void testGenerationForm::on_buttonBox_accepted(){
+void testGenerationForm::on_acceptButton_clicked(){
+    std::cout << "here\n\n" << std::endl;
+    this->hide();
+}
+
+void testGenerationForm::on_cencelButton_clicked(){
+    this->hide();
+}
+
+/**
+ * @brief testGenerationForm::on_Slider_valueChanged
+ *
+ *          The functions below are going to have various implications.
+ *
+ *          For example, on slidebarChrome = 99, the chrome browser should
+ *          be tested maximally for what ever operating platforms chosen.
+ *
+ *          If on the other hand, slidebarChrome = 55, the chrome browser should
+ *          be tested based on the following formula:
+ *
+ *          sidebarChrome / < OS Version Count >
+ *
+ */
+void testGenerationForm::on_defaultSlider_valueChanged(int value){
 
 }
+
+void testGenerationForm::on_firefoxSlider_valueChanged(int value){
+
+}
+
+
+
+
