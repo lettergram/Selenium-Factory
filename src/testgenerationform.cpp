@@ -28,11 +28,38 @@ testGenerationForm::~testGenerationForm(){
  *          As well as other tests they may run in the future, allowing them to save time.
  */
 void testGenerationForm::on_acceptButton_clicked(){
-    std::cout << "here\n\n" << std::endl;
     this->hide();
 }
 
+/**
+ * @brief testGenerationForm::on_cencelButton_clicked
+ *      Returns every value in the test genearation
+ *      form to the default state.
+ */
 void testGenerationForm::on_cencelButton_clicked(){
+
+    ui->chromeSlider->setValue(0);
+    ui->defaultSlider->setValue(0);
+    ui->firefoxSlider->setValue(0);
+    ui->safariSlider->setValue(0);
+
+    ui->androidCheckBox->setChecked(false);
+    ui->iosCheckBox->setChecked(false);
+    ui->windowsCheckBox->setChecked(false);
+    ui->macCheckBox->setChecked(false);
+    ui->linuxCheckBox->setChecked(false);
+
+    ui->chromeCheckBox->setChecked(false);
+    ui->firefoxCheckBox->setChecked(false);
+    ui->safariCheckBox->setChecked(false);
+    ui->operaCheckBox->setChecked(false);
+
+    ui->deviceBox->setChecked(false);
+
+    ui->testSuiteCheckBox->setChecked(false);
+    ui->testNameEdit->setText("Specific Test Name");
+    ui->testSuiteEdit->setText("New Test Suite");
+
     this->hide();
 }
 
