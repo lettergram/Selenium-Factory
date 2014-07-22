@@ -92,17 +92,61 @@ void testGenerationForm::on_firefoxSlider_valueChanged(int value){
     ui->firefoxCheckBox->setText("FireFox " + QString::number(version));
 }
 
+void testGenerationForm::on_androidVersionSlider_valueChanged(int value){
+    value = double(99 - value) / double(99.0 / 4.0);
+    ui->androidCheckBox->setText("Android 4." + QString::number(value));
+}
+
+void testGenerationForm::on_iosVersionSlider_valueChanged(int value){
+    value = double(99 - value) / double(99.0 / 7.0);
+    double version;
+    if(value == 7){
+        version = 7.1;
+    }else if(value == 6){
+        version = 7.0;
+    }else if(value == 5){
+        version = 6.1;
+    }else if(value == 4){
+        version = 6.0;
+    }else if(value == 3){
+        version = 5.1;
+    }else if(value == 2){
+        version = 5.0;
+    }else{
+        version = 4.3;
+    }
+
+    ui->iosCheckBox->setText("iOS " + QString::number(version));
+}
+
 /**
  * @brief testGenerationForm::selectedOptions
  *
  *          Returns the selected options in the following form:
  *
- *          Platform, Platform Version, Browser, Browser Version, Device (nil if none);
+ *          Platform, Platform Version, OS, Browser, Browser Version, Device (nil if none);
  *
  *          Each string of options will be broken up by a semicolon, and the device
  *          category will be nil if no device was selected.
  */
 std::string testGenerationForm::selectedOptions(){
+    std::string options = "";
 
+    if(ui->androidCheckBox->isChecked()){
+       addAndroid(&options);
+    }
+
+    std::cout << options << std::endl;
+}
+
+void testGenerationForm::addAndroid(std::string * options){
+    *options += "Linux,";
+}
+
+void testGenerationForm::addiOS(std::string * options){
+
+}
+
+void testGenerationForm::addDesktop(std::string * options){
 
 }

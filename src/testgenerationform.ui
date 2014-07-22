@@ -33,20 +33,20 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>50</y>
-      <width>21</width>
+      <y>80</y>
+      <width>241</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>OS</string>
+     <string>Operating Systems / Platforms</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="windowsCheckBox">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>70</y>
+      <y>110</y>
       <width>87</width>
       <height>20</height>
      </rect>
@@ -58,8 +58,8 @@
    <widget class="QCheckBox" name="macCheckBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>90</y>
+      <x>120</x>
+      <y>110</y>
       <width>87</width>
       <height>20</height>
      </rect>
@@ -71,7 +71,7 @@
    <widget class="QCheckBox" name="linuxCheckBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
+      <x>220</x>
       <y>110</y>
       <width>87</width>
       <height>20</height>
@@ -86,7 +86,7 @@
      <rect>
       <x>10</x>
       <y>130</y>
-      <width>87</width>
+      <width>111</width>
       <height>20</height>
      </rect>
     </property>
@@ -99,7 +99,7 @@
      <rect>
       <x>10</x>
       <y>150</y>
-      <width>87</width>
+      <width>111</width>
       <height>20</height>
      </rect>
     </property>
@@ -214,8 +214,8 @@
    <widget class="QCheckBox" name="deviceBox">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>70</y>
+      <x>10</x>
+      <y>30</y>
       <width>87</width>
       <height>20</height>
      </rect>
@@ -227,8 +227,8 @@
    <widget class="QLabel" name="devices">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>50</y>
+      <x>10</x>
+      <y>10</y>
       <width>111</width>
       <height>21</height>
      </rect>
@@ -336,6 +336,32 @@
     </property>
     <property name="text">
      <string>Internet Explorer</string>
+    </property>
+   </widget>
+   <widget class="QSlider" name="androidVersionSlider">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>130</y>
+      <width>181</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QSlider" name="iosVersionSlider">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>150</y>
+      <width>181</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
     </property>
    </widget>
   </widget>
