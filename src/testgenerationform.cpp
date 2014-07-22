@@ -27,6 +27,7 @@ testGenerationForm::~testGenerationForm(){
  *          As well as other tests they may run in the future, allowing them to save time.
  */
 void testGenerationForm::on_acceptButton_clicked(){
+    this->selectedOptions();
     this->hide();
 }
 
@@ -99,6 +100,8 @@ void testGenerationForm::on_androidVersionSlider_valueChanged(int value){
 
 void testGenerationForm::on_iosVersionSlider_valueChanged(int value){
     value = double(99 - value) / double(99.0 / 7.0);
+
+    // Ugly, fix later with CSV sheet
     double version;
     if(value == 7){
         version = 7.1;
@@ -133,20 +136,24 @@ std::string testGenerationForm::selectedOptions(){
     std::string options = "";
 
     if(ui->androidCheckBox->isChecked()){
-       addAndroid(&options);
+       options += addAndroid(options);
     }
 
     std::cout << options << std::endl;
+    return options;
 }
 
-void testGenerationForm::addAndroid(std::string * options){
-    *options += "Linux,";
+std::string testGenerationForm::addAndroid(std::string options){
+    options += "Linux,";
+    int val = int(99 - ui->androidVersionSlider->value()) / double(99.0 / 4.0);
+    options += "4." + QString::number(val).toStdString();
+    return options;
 }
 
-void testGenerationForm::addiOS(std::string * options){
+std::string testGenerationForm::addiOS(std::string options){
 
 }
 
-void testGenerationForm::addDesktop(std::string * options){
+std::string testGenerationForm::addDesktop(std::string options){
 
 }
