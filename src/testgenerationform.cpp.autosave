@@ -104,5 +104,5 @@ void testGenerationForm::on_firefoxSlider_valueChanged(int value){
  */
 std::string testGenerationForm::selectedOptions(){
 
-
+    
 }

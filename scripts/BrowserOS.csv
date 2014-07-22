@@ -1,0 +1,295 @@
+Platform,Browser,Version
+Windows 8.1,FireFox,30
+Windows 8.1,FireFox,29
+Windows 8.1,FireFox,28
+Windows 8.1,FireFox,27
+Windows 8.1,FireFox,26
+Windows 8.1,FireFox,25
+Windows 8.1,FireFox,24
+Windows 8.1,FireFox,23
+Windows 8.1,FireFox,22
+Windows 8.1,FireFox,21
+Windows 8.1,FireFox,20
+Windows 8.1,FireFox,19
+Windows 8.1,FireFox,18
+Windows 8.1,FireFox,17
+Windows 8.1,FireFox,16
+Windows 8.1,FireFox,15
+Windows 8.1,FireFox,14
+Windows 8.1,FireFox,13
+Windows 8.1,FireFox,12
+Windows 8.1,FireFox,11
+Windows 8.1,FireFox,10
+Windows 8.1,FireFox,9
+Windows 8.1,FireFox,8
+Windows 8.1,FireFox,7
+Windows 8.1,FireFox,6
+Windows 8.1,FireFox,5
+Windows 8.1,FireFox,4
+Windows 8.1,Chrome,b
+Windows 8.1,Chrome,36
+Windows 8.1,Chrome,35
+Windows 8.1,Chrome,34
+Windows 8.1,Chrome,33
+Windows 8.1,Chrome,32
+Windows 8.1,Chrome,31
+Windows 8.1,Chrome,30
+Windows 8.1,Chrome,29
+Windows 8.1,Chrome,28
+Windows 8.1,Chrome,27
+Windows 8.1,Chrome,26
+Windows 8.1,IE,11
+Windows 8,FireFox,30
+Windows 8,FireFox,29
+Windows 8,FireFox,28
+Windows 8,FireFox,27
+Windows 8,FireFox,26
+Windows 8,FireFox,25
+Windows 8,FireFox,24
+Windows 8,FireFox,23
+Windows 8,FireFox,22
+Windows 8,FireFox,21
+Windows 8,FireFox,20
+Windows 8,FireFox,19
+Windows 8,FireFox,18
+Windows 8,FireFox,17
+Windows 8,FireFox,16
+Windows 8,FireFox,15
+Windows 8,FireFox,14
+Windows 8,FireFox,13
+Windows 8,FireFox,12
+Windows 8,FireFox,11
+Windows 8,FireFox,10
+Windows 8,FireFox,9
+Windows 8,FireFox,8
+Windows 8,FireFox,7
+Windows 8,FireFox,6
+Windows 8,FireFox,5
+Windows 8,FireFox,4
+Windows 8,Chrome,b
+Windows 8,Chrome,36
+Windows 8,Chrome,35
+Windows 8,Chrome,34
+Windows 8,Chrome,33
+Windows 8,Chrome,32
+Windows 8,Chrome,31
+Windows 8,Chrome,30
+Windows 8,Chrome,29
+Windows 8,Chrome,28
+Windows 8,Chrome,27
+Windows 8,Chrome,26
+Windows 8,IE,10
+Windows 7,FireFox,30
+Windows 7,FireFox,29
+Windows 7,FireFox,28
+Windows 7,FireFox,27
+Windows 7,FireFox,26
+Windows 7,FireFox,25
+Windows 7,FireFox,24
+Windows 7,FireFox,23
+Windows 7,FireFox,22
+Windows 7,FireFox,21
+Windows 7,FireFox,20
+Windows 7,FireFox,19
+Windows 7,FireFox,18
+Windows 7,FireFox,17
+Windows 7,FireFox,16
+Windows 7,FireFox,15
+Windows 7,FireFox,14
+Windows 7,FireFox,13
+Windows 7,FireFox,12
+Windows 7,FireFox,11
+Windows 7,FireFox,10
+Windows 7,FireFox,9
+Windows 7,FireFox,8
+Windows 7,FireFox,7
+Windows 7,FireFox,6
+Windows 7,FireFox,5
+Windows 7,FireFox,4
+Windows 7,Chrome,b
+Windows 7,Chrome,36
+Windows 7,Chrome,35
+Windows 7,Chrome,34
+Windows 7,Chrome,33
+Windows 7,Chrome,32
+Windows 7,Chrome,31
+Windows 7,Chrome,30
+Windows 7,Chrome,29
+Windows 7,Chrome,28
+Windows 7,Chrome,27
+Windows 7,Chrome,26
+Windows 7,IE,11
+Windows 7,IE,10
+Windows 7,IE,9
+Windows 7,IE,8
+Windows 7,Opera,12
+Windows 7,Opera,11
+Windows XP,FireFox,30
+Windows XP,FireFox,29
+Windows XP,FireFox,28
+Windows XP,FireFox,27
+Windows XP,FireFox,26
+Windows XP,FireFox,25
+Windows XP,FireFox,24
+Windows XP,FireFox,23
+Windows XP,FireFox,22
+Windows XP,FireFox,21
+Windows XP,FireFox,20
+Windows XP,FireFox,19
+Windows XP,FireFox,18
+Windows XP,FireFox,17
+Windows XP,FireFox,16
+Windows XP,FireFox,15
+Windows XP,FireFox,14
+Windows XP,FireFox,13
+Windows XP,FireFox,12
+Windows XP,FireFox,11
+Windows XP,FireFox,10
+Windows XP,FireFox,9
+Windows XP,FireFox,8
+Windows XP,FireFox,7
+Windows XP,FireFox,6
+Windows XP,FireFox,5
+Windows XP,FireFox,4
+Windows XP,Chrome,b
+Windows XP,Chrome,36
+Windows XP,Chrome,35
+Windows XP,Chrome,34
+Windows XP,Chrome,33
+Windows XP,Chrome,32
+Windows XP,Chrome,31
+Windows XP,Chrome,30
+Windows XP,Chrome,29
+Windows XP,Chrome,28
+Windows XP,Chrome,27
+Windows XP,Chrome,26
+Windows XP,IE,8
+Windows XP,IE,7
+Windows XP,IE,6
+Windows XP,Opera,12
+Windows XP,Opera,11
+OS X 10.6,FireFox,30
+OS X 10.6,FireFox,29
+OS X 10.6,FireFox,28
+OS X 10.6,FireFox,27
+OS X 10.6,FireFox,26
+OS X 10.6,FireFox,25
+OS X 10.6,FireFox,24
+OS X 10.6,FireFox,23
+OS X 10.6,FireFox,22
+OS X 10.6,FireFox,21
+OS X 10.6,FireFox,20
+OS X 10.6,FireFox,19
+OS X 10.6,FireFox,18
+OS X 10.6,FireFox,17
+OS X 10.6,FireFox,16
+OS X 10.6,FireFox,15
+OS X 10.6,FireFox,14
+OS X 10.6,FireFox,13
+OS X 10.6,FireFox,12
+OS X 10.6,FireFox,11
+OS X 10.6,FireFox,10
+OS X 10.6,FireFox,9
+OS X 10.6,FireFox,8
+OS X 10.6,FireFox,7
+OS X 10.6,FireFox,6
+OS X 10.6,FireFox,5
+OS X 10.6,FireFox,4
+OS X 10.6,Chrome,b
+OS X 10.6,Chrome,35
+OS X 10.6,Chrome,34
+OS X 10.6,Chrome,33
+OS X 10.6,Chrome,32
+OS X 10.6,Chrome,31
+OS X 10.6,Chrome,30
+OS X 10.6,Chrome,29
+OS X 10.6,Chrome,28
+OS X 10.6,Chrome,27
+OS X 10.6,Safari,5
+OS X 10.6,Opera,12
+OS X 10.6,Opera,11
+OS X 10.8,Chrome,b
+OS X 10.8,Chrome,35
+OS X 10.8,Chrome,34
+OS X 10.8,Chrome,33
+OS X 10.8,Chrome,32
+OS X 10.8,Chrome,31
+OS X 10.8,Chrome,30
+OS X 10.8,Chrome,29
+OS X 10.8,Chrome,28
+OS X 10.8,Chrome,27
+OS X 10.8,Safari,5
+OS X 10.9,FireFox,30
+OS X 10.9,FireFox,29
+OS X 10.9,FireFox,28
+OS X 10.9,FireFox,27
+OS X 10.9,FireFox,26
+OS X 10.9,FireFox,25
+OS X 10.9,FireFox,24
+OS X 10.9,FireFox,23
+OS X 10.9,FireFox,22
+OS X 10.9,FireFox,21
+OS X 10.9,FireFox,20
+OS X 10.9,FireFox,19
+OS X 10.9,FireFox,18
+OS X 10.9,FireFox,17
+OS X 10.9,FireFox,16
+OS X 10.9,FireFox,15
+OS X 10.9,FireFox,14
+OS X 10.9,FireFox,13
+OS X 10.9,FireFox,12
+OS X 10.9,FireFox,11
+OS X 10.9,FireFox,10
+OS X 10.9,FireFox,9
+OS X 10.9,FireFox,8
+OS X 10.9,FireFox,7
+OS X 10.9,FireFox,6
+OS X 10.9,FireFox,5
+OS X 10.9,FireFox,4
+OS X 10.9,Chrome,b
+OS X 10.9,Chrome,35
+OS X 10.9,Chrome,34
+OS X 10.9,Chrome,33
+OS X 10.9,Chrome,32
+OS X 10.9,Chrome,31
+OS X 10.9,Safari,7
+Linux,FireFox,30
+Linux,FireFox,29
+Linux,FireFox,28
+Linux,FireFox,27
+Linux,FireFox,26
+Linux,FireFox,25
+Linux,FireFox,24
+Linux,FireFox,23
+Linux,FireFox,22
+Linux,FireFox,21
+Linux,FireFox,20
+Linux,FireFox,19
+Linux,FireFox,18
+Linux,FireFox,17
+Linux,FireFox,16
+Linux,FireFox,15
+Linux,FireFox,14
+Linux,FireFox,13
+Linux,FireFox,12
+Linux,FireFox,11
+Linux,FireFox,10
+Linux,FireFox,9
+Linux,FireFox,8
+Linux,FireFox,7
+Linux,FireFox,6
+Linux,FireFox,5
+Linux,FireFox,4
+Linux,Chrome,b
+Linux,Chrome,36
+Linux,Chrome,35
+Linux,Chrome,34
+Linux,Chrome,33
+Linux,Chrome,32
+Linux,Chrome,31
+Linux,Chrome,30
+Linux,Chrome,29
+Linux,Chrome,28
+Linux,Chrome,27
+Linux,Chrome,26
+Linux,Opera,12
