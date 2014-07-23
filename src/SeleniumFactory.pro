@@ -18,12 +18,14 @@ SOURCES += main.cpp\
            mainwindow.cpp \
            generate.cpp \ 
            testgenerationform.cpp \
-           javascripthandler.cpp
+           javascripthandler.cpp \
+           parse.cpp
 
 HEADERS  += mainwindow.h \
             generate.h \ 
             testgenerationform.h \
-            javascripthandler.h
+            javascripthandler.h \
+            parse.h
 
 FORMS    += mainwindow.ui \
             testgenerationform.ui

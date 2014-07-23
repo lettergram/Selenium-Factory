@@ -146,14 +146,31 @@ std::string testGenerationForm::selectedOptions(){
 std::string testGenerationForm::addAndroid(std::string options){
     options += "Linux,";
     int val = int(99 - ui->androidVersionSlider->value()) / double(99.0 / 4.0);
-    options += "4." + QString::number(val).toStdString();
+    options += "4." + QString::number(val).toStdString() + ",";
+    options += "android,";
+    options += "4." + QString::number(val).toStdString() + ",";
+    options += "Android;";e
     return options;
 }
 
 std::string testGenerationForm::addiOS(std::string options){
-
+    options += "OS X 10.9,"; // needs to change based on ios version, currently static
+    options += "7.1";
+    options += "iPhone,";
+    options += "7.1";
+    options += "iPhone;";
+    std::cout << options << std::endl;
+    return options;
 }
 
-std::string testGenerationForm::addDesktop(std::string options){
+std::string testGenerationForm::addWindows(std::string options){
+    return options;
+}
 
+std::string testGenerationForm::addMac(std::string options){
+    return options;
+}
+
+std::string testGenerationForm::addLinux(std::string options){
+    return options;
 }

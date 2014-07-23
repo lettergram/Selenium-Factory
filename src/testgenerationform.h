@@ -37,9 +37,13 @@ private slots:
 private:
 
     Ui::testGenerationForm *ui;
+
     std::string addAndroid(std::string);
     std::string addiOS(std::string);
-    std::string addDesktop(std::string);
+
+    std::string addWindows(std::string);
+    std::string addMac(std::string);
+    std::string addLinux(std::string);
 };
 
 #endif // TESTGENERATIONFORM_H
