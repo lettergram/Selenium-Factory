@@ -3,7 +3,7 @@
 .DS_Store?
 ._*
 .Trashes
-~
+*~
 */*~
 */*/*~
 tmp
