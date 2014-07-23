@@ -1,9 +1,16 @@
+/*
+ * Author: Austin Walters
+ * Last Modified: July 23, 2014
+ * Project: Selenium Factory
+ */
+
 #include "javascripthandler.h"
 #include <QDebug>
 
 /**
  * @brief javaScriptHandler::javaScriptHandler - generic consctructor for
- *          the javaScriptHandler class
+ *          the javaScriptHandler class. Java Script code written by
+ *          Gaurav D. Kale
  *
  *         Web Element order for CSV: TAG, id, class, name
  */

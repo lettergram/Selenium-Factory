@@ -9,13 +9,15 @@
 
 #include <string>
 #include <vector>
-#include <QString>
+#include <iostream>
+#include <fstream>
 
 class parse
 {
 public:
-    parse(std::string str);
+    parse(std::string);
     std::vector<std::vector<std::string> > getVector();
+
 private:
     std::string filename;
     std::vector<std::string> string_split(std::string, char);

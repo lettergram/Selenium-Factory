@@ -1,3 +1,9 @@
+/*
+ * Author: Austin Walters
+ * Last Modified: July 23, 2014
+ * Project: Selenium Factory
+ */
+
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QWebElement>
@@ -73,7 +79,7 @@ void MainWindow::on_genButton_released(){
     testGenForm->show();
 
     QDir dir;
-    while(!dir.cd("Scripts")){ dir.cdUp(); }
+    while(!dir.cd("scripts")){ dir.cdUp(); }
     api->outPutUserActions()->create(dir.path().toStdString(), "seleniumFunc.py");
 }
 

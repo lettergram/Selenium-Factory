@@ -1,10 +1,16 @@
+/*
+ * Author: Austin Walters
+ * Last Modified: July 23, 2014
+ * Project: Selenium Factory
+ */
+
 #include "testgenerationform.h"
 #include "ui_testgenerationform.h"
 
 testGenerationForm::testGenerationForm(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::testGenerationForm){
-    ui->setupUi(this);
+        ui->setupUi(this);
 }
 
 testGenerationForm::~testGenerationForm(){
@@ -140,6 +146,22 @@ std::string testGenerationForm::selectedOptions(){
     }
 
     std::cout << options << std::endl;
+
+    QDir dir;
+    while(!dir.cd("scripts")){ dir.cdUp(); }
+
+    parse browserOSOpts(dir.absolutePath().toStdString() + "/BrowserOS.CSV");
+    std::vector< std::vector<std::string> > opts = browserOSOpts.getVector();
+
+    std::cout << "Size 1: " << opts.size() << std::endl;
+
+    for(unsigned int i = 0; i < opts.size(); i++){
+        for(unsigned int j = 0; j < opts[i].size(); j++){
+            std::cout << opts[i][j] << ", ";
+        }
+        std::cout << ";\n";
+    }
+
     return options;
 }
 
@@ -149,7 +171,7 @@ std::string testGenerationForm::addAndroid(std::string options){
     options += "4." + QString::number(val).toStdString() + ",";
     options += "android,";
     options += "4." + QString::number(val).toStdString() + ",";
-    options += "Android;";e
+    options += "Android;";
     return options;
 }
 

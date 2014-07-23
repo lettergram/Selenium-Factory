@@ -3,11 +3,8 @@
 .DS_Store?
 ._*
 .Trashes
-~
 */*~
 */*/*~
 tmp
 release
 .autosave
-*/*.autosave
-/*/*.autosave

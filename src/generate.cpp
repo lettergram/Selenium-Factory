@@ -1,3 +1,9 @@
+/*
+ * Author: Austin Walters
+ * Last Modified: July 23, 2014
+ * Project: Selenium Factory
+ */
+
 #include "generate.h"
 
 Generate::Generate(){

@@ -1,8 +1,19 @@
+/*
+ * Author: Austin Walters
+ * Last Modified: July 23, 2014
+ * Project: Selenium Factory
+ */
+
 #ifndef TESTGENERATIONFORM_H
 #define TESTGENERATIONFORM_H
 
 #include <QMainWindow>
+#include <QDir>
+
 #include <iostream>
+#include <vector>
+
+#include "parse.h"
 
 namespace Ui {
 class testGenerationForm;
