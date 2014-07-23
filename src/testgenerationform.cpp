@@ -150,17 +150,8 @@ std::string testGenerationForm::selectedOptions(){
     QDir dir;
     while(!dir.cd("scripts")){ dir.cdUp(); }
 
-    parse browserOSOpts(dir.absolutePath().toStdString() + "/BrowserOS.CSV");
+    parse browserOSOpts(dir.absolutePath().toStdString() + "/BrowserOS.csv");
     std::vector< std::vector<std::string> > opts = browserOSOpts.getVector();
-
-    std::cout << "Size 1: " << opts.size() << std::endl;
-
-    for(unsigned int i = 0; i < opts.size(); i++){
-        for(unsigned int j = 0; j < opts[i].size(); j++){
-            std::cout << opts[i][j] << ", ";
-        }
-        std::cout << ";\n";
-    }
 
     return options;
 }

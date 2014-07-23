@@ -8,6 +8,7 @@
 #define PARSE_H
 
 #include <string>
+#include <string.h>
 #include <vector>
 #include <iostream>
 #include <fstream>
@@ -20,7 +21,7 @@ public:
 
 private:
     std::string filename;
-    std::vector<std::string> string_split(std::string, char);
+    std::vector<std::string> string_split(std::string, std::string);
 };
 
 #endif // PARSE_H
