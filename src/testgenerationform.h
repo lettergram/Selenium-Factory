@@ -9,6 +9,7 @@
 
 #include <QMainWindow>
 #include <QDir>
+#include <QInputDialog>
 
 #include <iostream>
 #include <vector>
@@ -45,9 +46,14 @@ private slots:
 
     void on_iosVersionSlider_valueChanged(int value);
 
+    void on_testNameEdit_returnPressed();
+
 private:
 
     Ui::testGenerationForm *ui;
+    std::vector< std::vector<std::string> > opts;
+
+    std::string funcDescription;
 
     std::string addAndroid(std::string);
     std::string addiOS(std::string);

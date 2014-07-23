@@ -17,8 +17,6 @@ Generate::Generate(){
  *          should be webElements name.
  */
 void Generate::push(std::string obj){
-    std::cout << "Size: " << objects->size() << std::endl;
-    std::cout << "Pushing:\n" << obj << std::endl;
     objects->push(obj);
 }
 
@@ -43,25 +41,13 @@ std::string Generate::pop(){
  */
 void Generate::create(std::string dir, std::string fileName){
 
-    std::cout << "Creating CSV Document\n" << std::endl;
-
-    std::cout << dir + "/" + fileName << "\n" << std::endl;
-
     std::fstream file;
     std::string name = dir + "/webElement.csv";
     file.open(name.c_str(), std::ios_base::out);
 
-    if(file.is_open())
-        std::cout << "Successfully Opened File!\n" << std::endl;
-    else
-        std::cout << "Failed to Open File!\n" << std::endl;
-
-    std::cout << "creating!\n---------------------\n\n" << std::endl;
     while(objects->size() > 0){
          std::string webElement = this->pop();
-
          file << webElement << std::endl;
-         std::cout << webElement << std::endl;
     }
 
     file.close();

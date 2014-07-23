@@ -11,6 +11,11 @@ testGenerationForm::testGenerationForm(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::testGenerationForm){
         ui->setupUi(this);
+
+        QDir dir;
+        while(!dir.cd("scripts")){ dir.cdUp(); }
+        parse browserOSOpts(dir.absolutePath().toStdString() + "/BrowserOS.csv");
+        opts = browserOSOpts.getVector();
 }
 
 testGenerationForm::~testGenerationForm(){
@@ -83,8 +88,10 @@ void testGenerationForm::on_cencelButton_clicked(){
  */
 
 void testGenerationForm::on_chromeSlider_valueChanged(int value){
-    int version = double(99 - value) / double(99.0 / 36.0);
-    ui->chromeCheckBox->setText("Chrome " + QString::number(version) + ".0");
+    int version = double(value) / double(99.0 / 9.0);
+    version += 1;
+    ui->chromeCheckBox->setText("Chrome " + QString::number(version));
+    ui->chromeCheckBox->setChecked(true);
 }
 
 /**
@@ -94,14 +101,16 @@ void testGenerationForm::on_chromeSlider_valueChanged(int value){
  * @param value
  */
 void testGenerationForm::on_firefoxSlider_valueChanged(int value){
-    int version = double(99 - value) / double(99.0 / 26.0);
-    version += 4;
-    ui->firefoxCheckBox->setText("FireFox " + QString::number(version));
+    int version = double(value) / double(99.0 / 24.0);
+    version += 1;
+    ui->firefoxCheckBox->setText("FireFox:  " + QString::number(version));
+    ui->firefoxCheckBox->setChecked(true);
 }
 
 void testGenerationForm::on_androidVersionSlider_valueChanged(int value){
     value = double(99 - value) / double(99.0 / 4.0);
     ui->androidCheckBox->setText("Android 4." + QString::number(value));
+    ui->androidCheckBox->setChecked(true);
 }
 
 void testGenerationForm::on_iosVersionSlider_valueChanged(int value){
@@ -126,6 +135,7 @@ void testGenerationForm::on_iosVersionSlider_valueChanged(int value){
     }
 
     ui->iosCheckBox->setText("iOS " + QString::number(version));
+    ui->iosCheckBox->setChecked(true);
 }
 
 /**
@@ -147,12 +157,6 @@ std::string testGenerationForm::selectedOptions(){
 
     std::cout << options << std::endl;
 
-    QDir dir;
-    while(!dir.cd("scripts")){ dir.cdUp(); }
-
-    parse browserOSOpts(dir.absolutePath().toStdString() + "/BrowserOS.csv");
-    std::vector< std::vector<std::string> > opts = browserOSOpts.getVector();
-
     return options;
 }
 
@@ -172,7 +176,6 @@ std::string testGenerationForm::addiOS(std::string options){
     options += "iPhone,";
     options += "7.1";
     options += "iPhone;";
-    std::cout << options << std::endl;
     return options;
 }
 
@@ -186,4 +189,11 @@ std::string testGenerationForm::addMac(std::string options){
 
 std::string testGenerationForm::addLinux(std::string options){
     return options;
+}
+
+void testGenerationForm::on_testNameEdit_returnPressed(){
+    bool ok;
+    funcDescription = QInputDialog::getText(this, tr("Function Description"),
+                                             tr("Function Description"), QLineEdit::Normal,
+                                             "Description of Function", &ok).toStdString();
 }

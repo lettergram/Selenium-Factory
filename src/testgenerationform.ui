@@ -91,7 +91,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Android</string>
+     <string>Android 4.4</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="iosCheckBox">
@@ -104,7 +104,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>iOS</string>
+     <string>iOS 7.1</string>
     </property>
    </widget>
    <widget class="QLabel" name="browser">
@@ -130,7 +130,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>Chrome b</string>
+     <string>Chrome: 1</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="firefoxCheckBox">
@@ -143,7 +143,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>FireFox 30</string>
+     <string>FireFox:  1</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="safariCheckBox">
@@ -249,14 +249,14 @@
    <widget class="QLabel" name="Qualty">
     <property name="geometry">
      <rect>
-      <x>100</x>
+      <x>120</x>
       <y>180</y>
-      <width>201</width>
+      <width>191</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Quality - Number of Versions</string>
+     <string>Quality: # of Browser Versions</string>
     </property>
    </widget>
    <widget class="QCheckBox" name="testSuiteCheckBox">
