@@ -101,7 +101,7 @@ void testGenerationForm::on_chromeSlider_valueChanged(int value){
  * @param value
  */
 void testGenerationForm::on_firefoxSlider_valueChanged(int value){
-    int version = double(value) / double(99.0 / 24.0);
+    int version = double(value) / double(99.0 / 25.0);
     version += 1;
     ui->firefoxCheckBox->setText("FireFox:  " + QString::number(version));
     ui->firefoxCheckBox->setChecked(true);
@@ -143,7 +143,7 @@ void testGenerationForm::on_iosVersionSlider_valueChanged(int value){
  *
  *          Returns the selected options in the following form:
  *
- *          Platform, Platform Version, OS, Browser, Browser Version, Device (nil if none);
+ *          Platform, Browser, Browser Version, Device (nil if none);
  *
  *          Each string of options will be broken up by a semicolon, and the device
  *          category will be nil if no device was selected.
@@ -151,9 +151,16 @@ void testGenerationForm::on_iosVersionSlider_valueChanged(int value){
 std::string testGenerationForm::selectedOptions(){
     std::string options = "";
 
-    if(ui->androidCheckBox->isChecked()){
+    if(ui->androidCheckBox->isChecked())
        options += addAndroid(options);
-    }
+    if(ui->iosCheckBox->isChecked())
+        options += addiOS(options);
+    if(ui->windowsCheckBox->isChecked())
+        options += addWindows(options);
+    if(ui->macCheckBox->isChecked())
+        options += addMac(options);
+    if(ui->linuxCheckBox->isChecked())
+        options += addLinux(options);
 
     std::cout << options << std::endl;
 
@@ -166,7 +173,7 @@ std::string testGenerationForm::addAndroid(std::string options){
     options += "4." + QString::number(val).toStdString() + ",";
     options += "android,";
     options += "4." + QString::number(val).toStdString() + ",";
-    options += "Android;";
+    options += "Android;\n";
     return options;
 }
 
@@ -175,20 +182,80 @@ std::string testGenerationForm::addiOS(std::string options){
     options += "7.1";
     options += "iPhone,";
     options += "7.1";
-    options += "iPhone;";
+    options += "iPhone;\n";
     return options;
 }
 
 std::string testGenerationForm::addWindows(std::string options){
+    for(unsigned int i = 0; i < opts.size(); i++){
+        if(0 == strncmp(opts[i][0].c_str(), "Windows", 7)
+        || 0 == strncmp(opts[i][0].c_str(), "windows", 7)){
+            options += addOSBrowser(i);
+        }
+    }
     return options;
 }
 
 std::string testGenerationForm::addMac(std::string options){
+    for(unsigned int i = 0; i < opts.size(); i++){
+        if(0 == strncmp(opts[i][0].c_str(), "OS X", 4)
+        || 0 == strncmp(opts[i][0].c_str(), "os x", 4)){
+            options += addOSBrowser(i);
+        }
+    }
     return options;
 }
 
 std::string testGenerationForm::addLinux(std::string options){
+    for(unsigned int i = 0; i < opts.size(); i++){
+        if(0 == strncmp(opts[i][0].c_str(), "linux", 5)
+        || 0 == strncmp(opts[i][0].c_str(), "Linux", 5)){
+            options += addOSBrowser(i);
+        }
+    }
     return options;
+}
+
+std::string testGenerationForm::addOSBrowser(int index){
+
+    std::string line = opts[index][0] + "," + opts[index][1] + ",";
+
+    bool firefox = (0 == std::strcmp(opts[index][1].c_str(), "FireFox")
+            || 0 == std::strcmp(opts[index][1].c_str(), "firefox"));
+    int firefoxV = double(99 - ui->firefoxSlider->value()) / double(99.0 / 26.0);
+    firefoxV += 4;
+
+    bool chrome = (0 == strcmp(opts[index][1].c_str(), "Chrome")
+            || 0 == strcmp(opts[index][1].c_str(), "chrome"));
+    int chromeV = double(99 - ui->chromeSlider->value()) / double(99.0 / 9.0);
+    chromeV += 26;
+
+    bool ie = (0 == strcmp(opts[index][1].c_str(), "IE")
+            || 0 == strcmp(opts[index][1].c_str(), "ie"));
+
+    bool safari = (0 == strcmp(opts[index][1].c_str(), "Safari")
+            || 0 == strcmp(opts[index][1].c_str(), "Safari"));
+
+    bool opera = (0 == strcmp(opts[index][1].c_str(), "Opera")
+            || 0 == strcmp(opts[index][1].c_str(), "opera"));
+
+    if(firefox && ui->firefoxCheckBox->isChecked()){
+        if(std::atoi(opts[index][2].c_str()) > firefoxV)
+            return line + opts[index][2] + ";\n";
+    }
+
+    if(chrome && ui->chromeCheckBox->isChecked()){
+        if(std::atoi(opts[index][2].c_str()) > chromeV)
+            return line + opts[index][2] + ";\n";
+    }
+
+    if((ui->IECheckBox->isChecked() && ie)
+    || (ui->safariCheckBox->isChecked() && safari)
+    || (ui->operaCheckBox->isChecked() && opera)){
+        return line + opts[index][2] + ";\n";
+    }
+
+    return "";
 }
 
 void testGenerationForm::on_testNameEdit_returnPressed(){
@@ -197,3 +264,4 @@ void testGenerationForm::on_testNameEdit_returnPressed(){
                                              tr("Function Description"), QLineEdit::Normal,
                                              "Description of Function", &ok).toStdString();
 }
+

@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include <vector>
+#include <string.h>
 
 #include "parse.h"
 
@@ -61,6 +62,8 @@ private:
     std::string addWindows(std::string);
     std::string addMac(std::string);
     std::string addLinux(std::string);
+
+    std::string addOSBrowser(int);
 };
 
 #endif // TESTGENERATIONFORM_H
