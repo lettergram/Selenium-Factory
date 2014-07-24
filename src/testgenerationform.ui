@@ -33,20 +33,23 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>80</y>
-      <width>241</width>
+      <y>140</y>
+      <width>291</width>
       <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Operating Systems / Platforms</string>
+     <string>Desktop Operating Systems / Platforms</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
     </property>
    </widget>
    <widget class="QCheckBox" name="windowsCheckBox">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>110</y>
+      <y>170</y>
       <width>87</width>
       <height>20</height>
      </rect>
@@ -58,8 +61,8 @@
    <widget class="QCheckBox" name="macCheckBox">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>110</y>
+      <x>110</x>
+      <y>170</y>
       <width>87</width>
       <height>20</height>
      </rect>
@@ -71,8 +74,8 @@
    <widget class="QCheckBox" name="linuxCheckBox">
     <property name="geometry">
      <rect>
-      <x>220</x>
-      <y>110</y>
+      <x>210</x>
+      <y>170</y>
       <width>87</width>
       <height>20</height>
      </rect>
@@ -81,37 +84,11 @@
      <string>Linux</string>
     </property>
    </widget>
-   <widget class="QCheckBox" name="androidCheckBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>130</y>
-      <width>111</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Android 4.4</string>
-    </property>
-   </widget>
-   <widget class="QCheckBox" name="iosCheckBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>150</y>
-      <width>111</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>iOS 7.1</string>
-    </property>
-   </widget>
    <widget class="QLabel" name="browser">
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>180</y>
+      <y>200</y>
       <width>61</width>
       <height>21</height>
      </rect>
@@ -124,7 +101,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>210</y>
+      <y>230</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -137,7 +114,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>230</y>
+      <y>250</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -150,7 +127,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>270</y>
+      <y>290</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -163,7 +140,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>290</y>
+      <y>310</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -176,7 +153,7 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>290</y>
+      <y>310</y>
       <width>121</width>
       <height>20</height>
      </rect>
@@ -189,7 +166,7 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>210</y>
+      <y>230</y>
       <width>181</width>
       <height>22</height>
      </rect>
@@ -202,7 +179,7 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>230</y>
+      <y>250</y>
       <width>181</width>
       <height>22</height>
      </rect>
@@ -223,9 +200,9 @@
    <widget class="QCheckBox" name="deviceBox">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>30</y>
-      <width>87</width>
+      <x>120</x>
+      <y>10</y>
+      <width>51</width>
       <height>20</height>
      </rect>
     </property>
@@ -250,7 +227,7 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>180</y>
+      <y>200</y>
       <width>191</width>
       <height>21</height>
      </rect>
@@ -338,7 +315,7 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>270</y>
+      <y>290</y>
       <width>131</width>
       <height>20</height>
      </rect>
@@ -347,30 +324,121 @@
      <string>Internet Explorer</string>
     </property>
    </widget>
-   <widget class="QSlider" name="androidVersionSlider">
+   <widget class="QCheckBox" name="androidEmulatedBox">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>130</y>
-      <width>181</width>
-      <height>22</height>
+      <x>10</x>
+      <y>40</y>
+      <width>141</width>
+      <height>20</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+    <property name="text">
+     <string>Android (Emulated)</string>
     </property>
    </widget>
-   <widget class="QSlider" name="iosVersionSlider">
+   <widget class="QCheckBox" name="samsungGalaxyNexusBox">
     <property name="geometry">
      <rect>
-      <x>120</x>
-      <y>150</y>
-      <width>181</width>
-      <height>22</height>
+      <x>10</x>
+      <y>60</y>
+      <width>171</width>
+      <height>20</height>
      </rect>
     </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
+    <property name="text">
+     <string>Samsung Galaxy Nexus</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="googleNexus7CBox">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>80</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Google Nexus 7C</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="HTCOneXBox">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>40</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>HTC One X</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="motorolaDroid4Box">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>100</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Motorola Droid 4</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="iPhoneBox">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>60</y>
+      <width>87</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>iPhone</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="iPadBox">
+    <property name="geometry">
+     <rect>
+      <x>210</x>
+      <y>80</y>
+      <width>87</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>iPad</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="androidCheckBox">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>10</y>
+      <width>87</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Android</string>
+    </property>
+   </widget>
+   <widget class="QCheckBox" name="iosCheckBox">
+    <property name="geometry">
+     <rect>
+      <x>260</x>
+      <y>10</y>
+      <width>87</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>iOS</string>
     </property>
    </widget>
   </widget>

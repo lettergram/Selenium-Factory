@@ -43,11 +43,24 @@ private slots:
 
     std::string selectedOptions();
 
-    void on_androidVersionSlider_valueChanged(int value);
-
-    void on_iosVersionSlider_valueChanged(int value);
-
     void on_testNameEdit_returnPressed();
+
+    void on_HTCOneXBox_clicked(bool checked);
+    void on_androidEmulatedBox_clicked(bool checked);
+    void on_samsungGalaxyNexusBox_clicked(bool checked);
+    void on_googleNexus7CBox_clicked(bool checked);
+
+    void on_motorolaDroid4Box_clicked(bool checked);
+
+    void on_iPhoneBox_clicked(bool checked);
+
+    void on_iPadBox_clicked(bool checked);
+
+    void on_androidCheckBox_clicked(bool checked);
+
+    void on_iosCheckBox_clicked(bool checked);
+
+    void on_deviceBox_clicked();
 
 private:
 
@@ -64,6 +77,7 @@ private:
     std::string addLinux(std::string);
 
     std::string addOSBrowser(int);
+    std::string addMobile(int);
 };
 
 #endif // TESTGENERATIONFORM_H

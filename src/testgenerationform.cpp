@@ -52,8 +52,6 @@ void testGenerationForm::on_cencelButton_clicked(){
     ui->chromeSlider->setValue(0);
     ui->firefoxSlider->setValue(0);
 
-    ui->androidCheckBox->setChecked(false);
-    ui->iosCheckBox->setChecked(false);
     ui->windowsCheckBox->setChecked(false);
     ui->macCheckBox->setChecked(false);
     ui->linuxCheckBox->setChecked(false);
@@ -107,37 +105,6 @@ void testGenerationForm::on_firefoxSlider_valueChanged(int value){
     ui->firefoxCheckBox->setChecked(true);
 }
 
-void testGenerationForm::on_androidVersionSlider_valueChanged(int value){
-    value = double(99 - value) / double(99.0 / 4.0);
-    ui->androidCheckBox->setText("Android 4." + QString::number(value));
-    ui->androidCheckBox->setChecked(true);
-}
-
-void testGenerationForm::on_iosVersionSlider_valueChanged(int value){
-    value = double(99 - value) / double(99.0 / 7.0);
-
-    // Ugly, fix later with CSV sheet
-    double version;
-    if(value == 7){
-        version = 7.1;
-    }else if(value == 6){
-        version = 7.0;
-    }else if(value == 5){
-        version = 6.1;
-    }else if(value == 4){
-        version = 6.0;
-    }else if(value == 3){
-        version = 5.1;
-    }else if(value == 2){
-        version = 5.0;
-    }else{
-        version = 4.3;
-    }
-
-    ui->iosCheckBox->setText("iOS " + QString::number(version));
-    ui->iosCheckBox->setChecked(true);
-}
-
 /**
  * @brief testGenerationForm::selectedOptions
  *
@@ -162,27 +129,30 @@ std::string testGenerationForm::selectedOptions(){
     if(ui->linuxCheckBox->isChecked())
         options += addLinux(options);
 
+    // For testing only
+    std::cout << "----- Options -----\n\n";
     std::cout << options << std::endl;
 
     return options;
 }
 
 std::string testGenerationForm::addAndroid(std::string options){
-    options += "Linux,";
-    int val = int(99 - ui->androidVersionSlider->value()) / double(99.0 / 4.0);
-    options += "4." + QString::number(val).toStdString() + ",";
-    options += "android,";
-    options += "4." + QString::number(val).toStdString() + ",";
-    options += "Android;\n";
+    for(unsigned int i = 0; i < opts.size(); i++){
+        if(0 == std::strcmp(opts[i][1].c_str(), "Android")
+        || 0 == std::strcmp(opts[i][1].c_str(), "android")){
+            options += addOSBrowser(i);
+        }
+    }
     return options;
 }
 
 std::string testGenerationForm::addiOS(std::string options){
-    options += "OS X 10.9,"; // needs to change based on ios version, currently static
-    options += "7.1";
-    options += "iPhone,";
-    options += "7.1";
-    options += "iPhone;\n";
+    for(unsigned int i = 0; i < opts.size(); i++){
+        if(0 == std::strcmp(opts[i][1].c_str(), "iPad")
+        || 0 == std::strcmp(opts[i][1].c_str(), "iPhone")){
+            options += addOSBrowser(i);
+        }
+    }
     return options;
 }
 
@@ -216,6 +186,42 @@ std::string testGenerationForm::addLinux(std::string options){
     return options;
 }
 
+std::string testGenerationForm::addMobile(int index){
+
+    std::string line = opts[index][0] + "," + opts[index][1] + ",";
+
+    if(ui->androidEmulatedBox->isChecked() &&
+      (0 == std::strcmp(opts[index][3].c_str(), "Android"))){
+        return line + opts[index][2] + "," + opts[index][3] + ";";
+    }
+    if(ui->HTCOneXBox->isChecked() &&
+      (0 == std::strcmp(opts[index][3].c_str(), "HTC One X"))){
+        return line + opts[index][2] + "," + opts[index][3] + ";";
+    }
+    if(ui->samsungGalaxyNexusBox->isChecked() &&
+      (0 == std::strcmp(opts[index][3].c_str(), "Samsung Galaxy Nexus"))){
+        return line + opts[index][2] + "," + opts[index][3] + ";";
+    }
+    if(ui->googleNexus7CBox->isChecked() &&
+      (0 == std::strcmp(opts[index][3].c_str(), "Google Nexus 7C"))){
+        return line + opts[index][2] + "," + opts[index][3] + ";";
+    }
+    if(ui->motorolaDroid4Box->isChecked() &&
+      (0 == std::strcmp(opts[index][3].c_str(), "Motorola Droid 4"))){
+        return line + opts[index][2] + "," + opts[index][3] + ";";
+    }
+    if(ui->iPhoneBox->isChecked() &&
+    (0 == std::strcmp(opts[index][3].c_str(), "iPhone"))){
+        return line + opts[index][2] + "," + opts[index][3] + ";";
+    }
+    if(ui->iPadBox->isChecked() &&
+    (0 == std::strcmp(opts[index][3].c_str(), "iPad"))){
+        return line + opts[index][2] + "," + opts[index][3] + ";";
+    }
+
+    return "";
+}
+
 std::string testGenerationForm::addOSBrowser(int index){
 
     std::string line = opts[index][0] + "," + opts[index][1] + ",";
@@ -241,18 +247,23 @@ std::string testGenerationForm::addOSBrowser(int index){
 
     if(firefox && ui->firefoxCheckBox->isChecked()){
         if(std::atoi(opts[index][2].c_str()) > firefoxV)
-            return line + opts[index][2] + ";\n";
+            return line + opts[index][2] + ";";
     }
 
     if(chrome && ui->chromeCheckBox->isChecked()){
         if(std::atoi(opts[index][2].c_str()) > chromeV)
-            return line + opts[index][2] + ";\n";
+            return line + opts[index][2] + ";";
     }
 
     if((ui->IECheckBox->isChecked() && ie)
     || (ui->safariCheckBox->isChecked() && safari)
     || (ui->operaCheckBox->isChecked() && opera)){
-        return line + opts[index][2] + ";\n";
+        return line + opts[index][2] + ";";
+    }
+
+    if(ui->androidCheckBox->isChecked()
+    || ui->iosCheckBox->isChecked()){
+        return addMobile(index);
     }
 
     return "";
@@ -265,3 +276,47 @@ void testGenerationForm::on_testNameEdit_returnPressed(){
                                              "Description of Function", &ok).toStdString();
 }
 
+/**
+ * @brief Below are a large number of "checked" functions,
+ *        if a checkbox is checked, these functions will be used
+ *        to check the "heirarchy" boxes, such as "android or iOS.
+ */
+void testGenerationForm::on_HTCOneXBox_clicked(bool checked){
+
+}
+
+void testGenerationForm::on_androidEmulatedBox_clicked(bool checked){
+
+}
+
+void testGenerationForm::on_samsungGalaxyNexusBox_clicked(bool checked){
+
+}
+
+void testGenerationForm::on_googleNexus7CBox_clicked(bool checked){
+
+}
+
+void testGenerationForm::on_motorolaDroid4Box_clicked(bool checked){
+
+}
+
+void testGenerationForm::on_iPhoneBox_clicked(bool checked){
+
+}
+
+void testGenerationForm::on_iPadBox_clicked(bool checked){
+
+}
+
+void testGenerationForm::on_androidCheckBox_clicked(bool checked){
+
+}
+
+void testGenerationForm::on_iosCheckBox_clicked(bool checked){
+
+}
+
+void testGenerationForm::on_deviceBox_clicked(){
+
+}
