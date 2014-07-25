@@ -36,8 +36,8 @@ else:
 
       finalXML = '<?xml version="1.0" encoding="UTF-8" ?>\n<!DOCTYPE suite (View Source for full doctype...)>\n<suite thread-count="4" name="suite" parallel="tests" junit="false configfailurepolicy="skip" skipfailedinvocationcounts="false" data-provider-thread-count="10" group-by-instance="false"\n\tpreserve-order="true" allow-return-values="false">\n\t<!--  Test  -->\n'
         
-testName = testArr[1][0]
-suiteName = testArr[1][1]
+suiteName = testArr[1][0]
+testName = testArr[1][1]
 
 # Start at range one so we don't get headers
 for i in range(2,len(testArr)):
