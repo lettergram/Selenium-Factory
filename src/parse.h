@@ -1,6 +1,9 @@
 /*
  * Author: Gaurav D. Kale
- * Date: July 22, 2014
+ * Creation Date: July 22, 2014
+ *
+ * Last Edit: Austin G. Walters
+ * Last Modified: July 24, 2014
  * Project: Selenium Factory
  */
 
@@ -18,6 +21,7 @@ class parse
 public:
     parse(std::string);
     std::vector<std::vector<std::string> > getVector();
+    void createCSV(std::vector<std::vector<std::string> >, std::string);
 
 private:
     std::string filename;

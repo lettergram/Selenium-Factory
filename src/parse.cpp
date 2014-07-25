@@ -1,6 +1,9 @@
 /*
  * Author: Gaurav D. Kale
- * Date: July 22, 2014
+ * Creation Date: July 22, 2014
+ *
+ * Last Edit: Austin G. Walters
+ * Last Modified: July 24, 2014
  * Project: Selenium Factory
  */
 
@@ -31,6 +34,22 @@ std::vector<std::vector<std::string> > parse::getVector() {
     }
 
     return output;
+}
+
+/**
+ * @brief parse::createCSV - Creates a CSV file based on the
+ * vector of vectors of strings
+ * @param 2D vector containting the data for the CSV document
+ */
+void parse::createCSV(std::vector<std::vector<std::string> > vector, std::string newFile) {
+    std::ofstream file ( newFile.c_str() );
+
+    for(unsigned int i = 0; i < vector.size(); i++){
+        for(unsigned int j = 0; j < vector[i].size() - 1; j++){
+            file << vector[i][j] << ",";
+        }
+        file << vector[i][vector[i].size()-1] << "\n";
+    }
 }
 
 /**
