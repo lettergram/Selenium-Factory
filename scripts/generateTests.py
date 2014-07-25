@@ -78,14 +78,14 @@ for i in range(2,len(testArr)):
 finalXML += end
 filename = 'testXML/configTest'
 
-if testName != 'none':
+if suiteName != 'none':
   
-        filename += '-' + testName
+        filename += '-' + suiteName
 else:
         filename += '-' + str(randint(1,999999))
 
-if suiteName != 'none':
-        filename += '-' + suiteName
+if testName != 'none':
+        filename += '-' + testName
 else:
         filename += '-' + str(randint(1,999999))
 
