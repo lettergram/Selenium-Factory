@@ -72,7 +72,3 @@ filename = 'testXML/configTest' + '-' + str(randint(1,999999))
 filename += '-' + str(randint(1,999999)) + '.XML'
 f = open(filename, 'w')
 f.write(finalXML)
-
-
-
-
