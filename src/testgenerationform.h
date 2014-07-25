@@ -49,18 +49,16 @@ private slots:
     void on_androidEmulatedBox_clicked(bool checked);
     void on_samsungGalaxyNexusBox_clicked(bool checked);
     void on_googleNexus7CBox_clicked(bool checked);
-
     void on_motorolaDroid4Box_clicked(bool checked);
-
     void on_iPhoneBox_clicked(bool checked);
-
     void on_iPadBox_clicked(bool checked);
-
     void on_androidCheckBox_clicked(bool checked);
-
     void on_iosCheckBox_clicked(bool checked);
+    void on_deviceBox_clicked(bool checked);
 
-    void on_deviceBox_clicked();
+    void checkAndroidBoxesClear();
+    void checkiOSBoxesClear();
+    void checkAllBoxesClear();
 
 private:
 
