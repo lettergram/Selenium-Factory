@@ -38,7 +38,7 @@ testGenerationForm::~testGenerationForm(){
  *          As well as other tests they may run in the future, allowing them to save time.
  */
 void testGenerationForm::on_acceptButton_clicked(){
-    this->selectedOptions();
+    std::string capInputs = selectedOptions();
     this->hide();
 }
 
@@ -299,11 +299,7 @@ std::string testGenerationForm::addOSBrowser(int index){
     return "";
 }
 
-/**
- * @brief testGenerationForm::on_testNameEdit_returnPressed
- *          Takes function description for the added function.
- */
-void testGenerationForm::on_testNameEdit_returnPressed(){
+void testGenerationForm::on_testNameEdit_editingFinished(){
     bool ok;
     funcDescription = QInputDialog::getText(this, tr("Function Description"),
                                              tr("Function Description"), QLineEdit::Normal,

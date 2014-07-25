@@ -12,6 +12,7 @@
 #include <QWebFrame>
 #include <QtWebKitWidgets/QWebView>
 #include <QDir>
+#include <QKeyEvent>
 
 #include <iostream>
 
@@ -32,21 +33,16 @@ public:
 
 private slots:
     void on_urlLineEdit_returnPressed();
-
     void on_toggleButton_released();
-
     void on_genButton_released();
-
     void on_webView_selectionChanged();
-
     void on_backButton_clicked();
-
     void on_webView_loadProgress(int progress);
-
     void on_refreshButton_released();
-
-
     void on_toolButton_clicked();
+    void keyPressEvent( QKeyEvent *k );
+
+    void on_urlLineEdit_selectionChanged();
 
 private:
 
@@ -56,6 +52,7 @@ private:
     javaScriptHandler * api;
     Generate * gen;
     testGenerationForm * testGenForm;
+
 };
 
 #endif // MAINWINDOW_H

@@ -43,7 +43,7 @@ private slots:
 
     std::string selectedOptions();
 
-    void on_testNameEdit_returnPressed();
+    void on_testNameEdit_editingFinished();
 
     void on_HTCOneXBox_clicked(bool checked);
     void on_androidEmulatedBox_clicked(bool checked);
@@ -59,6 +59,8 @@ private slots:
     void checkAndroidBoxesClear();
     void checkiOSBoxesClear();
     void checkAllBoxesClear();
+
+
 
 private:
 

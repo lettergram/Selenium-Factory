@@ -20,6 +20,8 @@ MainWindow::MainWindow(QWidget *parent) :
     api = new javaScriptHandler(gen);
     testGenForm = new testGenerationForm();
 
+    ui->webView->grabKeyboard();
+
     collect = false;
 }
 
@@ -76,6 +78,7 @@ void MainWindow::on_backButton_clicked(){
  */
 void MainWindow::on_genButton_released(){
 
+    ui->webView->releaseKeyboard();
     testGenForm->show();
 
     QDir dir;
@@ -88,9 +91,8 @@ void MainWindow::on_genButton_released(){
  *      CURRENTLY not very useful.
  */
 void MainWindow::on_webView_selectionChanged(){
-
-    QString html = ui->webView->page()->mainFrame()->toHtml();
-    ui->urlLineEdit->setText(ui->webView->url().toString());
+    std::cout << "webview selected" << std::endl;
+    ui->webView->grabKeyboard();
 }
 
 /**
@@ -124,5 +126,15 @@ void MainWindow::on_refreshButton_released(){
 }
 
 void MainWindow::on_toolButton_clicked(){
+    ui->webView->releaseKeyboard();
     testGenForm->show();
+}
+
+void MainWindow::keyPressEvent( QKeyEvent *key ){
+   std::cout << key->text().toStdString() << std::endl;
+}
+
+void MainWindow::on_urlLineEdit_selectionChanged(){
+    std::cout << "url selected" << std::endl;
+    ui->webView->releaseKeyboard();
 }
