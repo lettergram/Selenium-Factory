@@ -24,11 +24,14 @@ public:
     javaScriptHandler(Generate *);
     void injectJavaScript(QWebFrame *);
     Generate * outPutUserActions();
+    void turnOn();
+    void turnOff();
 
 private:
 
     QString * webElementIdentification;
     Generate * userActionList;
+    bool collect;
 
 };
 

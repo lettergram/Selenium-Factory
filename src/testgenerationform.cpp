@@ -319,7 +319,7 @@ std::string testGenerationForm::addOSBrowser(int index){
     return "";
 }
 
-void testGenerationForm::on_testNameEdit_editingFinished(){
+void testGenerationForm::on_testNameEdit_returnPressed(){
     bool ok;
     funcDescription = QInputDialog::getText(this, tr("Function Description"),
                                              tr("Function Description"), QLineEdit::Normal,

@@ -58,8 +58,10 @@ void MainWindow::on_toggleButton_released(){
     collect = !collect;
     if(collect){
         ui->toggleButton->setText("Stop");
+        api->turnOn();
     }else{
         ui->toggleButton->setText("Start");
+        api->turnOff();
     }
 }
 
@@ -91,8 +93,8 @@ void MainWindow::on_genButton_released(){
  *      CURRENTLY not very useful.
  */
 void MainWindow::on_webView_selectionChanged(){
-    std::cout << "webview selected" << std::endl;
-    ui->webView->grabKeyboard();
+    if(!testGenForm->isVisible())
+        ui->webView->grabKeyboard();
 }
 
 /**

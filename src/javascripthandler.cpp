@@ -68,7 +68,8 @@ void javaScriptHandler::injectJavaScript(QWebFrame *frame){
  *                  web element
  */
 void javaScriptHandler::webElement(QString element){
-    userActionList->push(element.toStdString());
+    if(collect)
+        userActionList->push(element.toStdString());
 }
 
 /**
@@ -77,4 +78,20 @@ void javaScriptHandler::webElement(QString element){
  */
 Generate * javaScriptHandler::outPutUserActions(){
     return userActionList;
+}
+
+/**
+ * @brief javaScriptHandler::turnOff
+ *          Turns off collection of web elements
+ */
+void javaScriptHandler::turnOff(){
+   collect = false;
+}
+
+/**
+ * @brief javaScriptHandler::turnOn
+ *          Turns on collection of web elements
+ */
+void javaScriptHandler::turnOn(){
+   collect = true;
 }
