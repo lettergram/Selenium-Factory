@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->webView->grabKeyboard();
 
-    collect = false;
+    collect = true;
 }
 
 MainWindow::~MainWindow(){
