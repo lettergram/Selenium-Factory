@@ -1,6 +1,6 @@
 /*
  * Author: Austin Walters
- * Last Modified: July 23, 2014
+ * Last Modified: July 28, 2014
  * Project: Selenium Factory
  */
 
@@ -111,7 +111,10 @@ void MainWindow::on_webView_loadProgress(int progress){
 
         api->injectJavaScript(ui->webView->page()->mainFrame());
 
-        gen->push(ui->webView->url().toString().toStdString()); // maybe should be somewhere else
+        if(collect){
+            gen->push("URL");
+            gen->push(ui->webView->url().toString().toStdString());
+        }
 
         ui->urlLineEdit->setVisible(true);
         ui->urlLineEdit->setText(ui->webView->url().toString());

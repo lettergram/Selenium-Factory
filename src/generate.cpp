@@ -1,10 +1,11 @@
 /*
  * Author: Austin Walters
- * Last Modified: July 23, 2014
+ * Last Modified: July 28, 2014
  * Project: Selenium Factory
  */
 
 #include "generate.h"
+#include <time.h>
 
 Generate::Generate(){
     objects = new std::queue<std::string>;
@@ -45,10 +46,13 @@ void Generate::create(std::string dir, std::string fileName){
     std::string name = dir + "/webElement.csv";
     file.open(name.c_str(), std::ios_base::out);
 
+    time_t t;
+    time(&t);
+    file << ctime(&t) << std::endl;
+
     while(objects->size() > 0){
          std::string webElement = this->pop();
          file << webElement << std::endl;
     }
-
     file.close();
 }

@@ -1,6 +1,7 @@
 /*
- * Author: Austin Walters
- * Last Modified: July 23, 2014
+ * Author: Austin G. Walters
+ * JavaScript Author: Gaurav D. Kale
+ * Last Modified: July 28, 2014
  * Project: Selenium Factory
  */
 
@@ -46,6 +47,7 @@ javaScriptHandler::javaScriptHandler(Generate * gen){
     javaScript += "}";
 
     webElementIdentification = new QString(javaScript);
+    collect = false;
 }
 
 /**
