@@ -38,7 +38,27 @@ testGenerationForm::~testGenerationForm(){
  *          As well as other tests they may run in the future, allowing them to save time.
  */
 void testGenerationForm::on_acceptButton_clicked(){
+
     std::string capInputs = selectedOptions();
+
+    QDir dir;
+    while(!dir.cd("scripts")){ dir.cdUp(); }
+    std::string filename = dir.absolutePath().toStdString() + "/testParameters.csv";
+
+    std::ofstream myfile;
+    myfile.open(filename.c_str());
+
+    myfile << ui->testNameEdit->text().toStdString();
+    myfile << "," + ui->testSuiteEdit->text().toStdString() + "\n";
+    myfile << capInputs;
+    myfile.close();
+
+    QProcess script;
+    script.setWorkingDirectory(dir.absolutePath());
+
+    script.start("python generateTests.py", QIODevice::ReadWrite);
+    script.waitForFinished();
+
     this->hide();
 }
 

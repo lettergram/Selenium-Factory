@@ -127,7 +127,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>290</y>
+      <y>280</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -140,7 +140,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>310</y>
+      <y>300</y>
       <width>111</width>
       <height>20</height>
      </rect>
@@ -153,7 +153,7 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>310</y>
+      <y>300</y>
       <width>121</width>
       <height>20</height>
      </rect>
@@ -240,7 +240,7 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>350</y>
+      <y>340</y>
       <width>141</width>
       <height>20</height>
      </rect>
@@ -259,7 +259,7 @@
      </rect>
     </property>
     <property name="text">
-     <string>New Test Suite</string>
+     <string>none</string>
     </property>
    </widget>
    <widget class="QLineEdit" name="testNameEdit">
@@ -272,14 +272,14 @@
      </rect>
     </property>
     <property name="text">
-     <string>Specific Test Name</string>
+     <string>none</string>
     </property>
    </widget>
    <widget class="QComboBox" name="suiteBox">
     <property name="geometry">
      <rect>
       <x>170</x>
-      <y>350</y>
+      <y>340</y>
       <width>141</width>
       <height>21</height>
      </rect>
@@ -315,7 +315,7 @@
     <property name="geometry">
      <rect>
       <x>120</x>
-      <y>290</y>
+      <y>280</y>
       <width>131</width>
       <height>20</height>
      </rect>
@@ -439,6 +439,32 @@
     </property>
     <property name="text">
      <string>iOS</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="suiteLabel">
+    <property name="geometry">
+     <rect>
+      <x>170</x>
+      <y>370</y>
+      <width>111</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Suite Name</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="testLabel">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>370</y>
+      <width>141</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Test Name</string>
     </property>
    </widget>
   </widget>
