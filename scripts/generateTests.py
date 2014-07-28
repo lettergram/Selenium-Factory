@@ -19,9 +19,9 @@ def csvConvert(file):
     result.append([])
     for i in range(0,len(row)):     #Goes to each element in row
       if row[i]=='':
-        result[len(result)-1].append('N/A') #Null element transformed to Not Applicable
+        result[len(result) - 1].append('N/A') #Null element transformed to Not Applicable
       else:
-        result[len(result)-1].append(row[i])   #Element added
+        result[len(result) - 1].append(row[i])   #Element added
   return result                       #result is 2D Array
 
 def main(argv):
@@ -37,19 +37,21 @@ def main(argv):
   testName = formArr[0][1]
 
   # Start at range one so we don't get headers
-  for i in range(2,len(formArr)):
+  for i in range(1, len(formArr)):
     testn = '\t<test name="Test-'+str(i - 1)+'" junit="false" skipfailedinvocationcounts="false" preserve-order="true" group-by-instances="false" allow-return-values="false">\n'
+    
+    cap = '\t\t<parameter name="cap" value="'+formArr[i][1]+'" />\n'
 
-    cap = '\t\t<parameter name="cap" value="'+formArr[i][0]+'" />\n'
-
-    platform = '\t\t<parameter name="platform" value="'+formArr[i][1]+'" />\n'
+    platform = '\t\t<parameter name="platform" value="'+formArr[i][0]+'" />\n'
 
     version = '\t\t<parameter name="browser" value="'+formArr[i][2]+'" />\n'
-
-    device ='\t\t<parameter name="device" value="'+formArr[i][3]+'" />\n'
-        
-    orientation ='\t\t<parameter name="ori" value="'+ 'portrait' +'" />\n'
-
+    
+    if(len(formArr[i]) > 3):
+      device ='\t\t<parameter name="device" value="'+formArr[i][3]+'" />\n'
+      orientation ='\t\t<parameter name="ori" value="'+ 'portrait' +'" />\n'
+    else:
+      device ='\t\t<parameter name="device" value="'+ 'none' +'" />\n'
+      orientation ='\t\t<parameter name="ori" value="'+ 'none' +'" />\n'
     classes = '\t\t<classes>\n'
         
     for j in range(len(testArr[0])):
@@ -60,6 +62,7 @@ def main(argv):
 
     finalXML += testn
     finalXML += cap
+    finalXML += platform
     finalXML += version
     finalXML += device
     finalXML += orientation
