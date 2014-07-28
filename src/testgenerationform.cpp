@@ -56,6 +56,8 @@ void testGenerationForm::on_acceptButton_clicked(){
     QProcess script;
     script.setWorkingDirectory(dir.absolutePath());
 
+    wait(0);
+
     script.start("python generateTests.py", QIODevice::ReadWrite);
     script.waitForFinished();
 
