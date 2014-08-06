@@ -2,15 +2,16 @@
 Created on Jul 24, 2014
 Modified on July 25, 2014
 
-@author: pdono_000
-@editor: lettergram
-@project: Selenium Factory
+Primary Author: Austin Walters (lettergram)
+Secondary Author: Patrick Donovan (pdono_000)
+Project: Selenium Factory
 '''
 import csv
 import sys, getopt
 from random import randint
 
 #This method gets a 2D array of strings from the rows and columns of a CSV file.
+# Created by pdono_000  
 def csvConvert(file):
   result = []
   csvfile = open(file, 'rb')
