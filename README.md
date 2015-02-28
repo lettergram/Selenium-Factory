@@ -10,7 +10,7 @@ Essentially, a web browser capable of recording a users actions upon clicking st
 then with a simple click of a button all of the actions are translated into java and XML!
 
 
-This version is designed as a replacement for the Selenium Factory FireFox plugin. The idea is to use CSS as opposed to xPaths, as the xPaths have issues spaning multiple websites. Using CSS we can avoid these issues, and for companies (such as Capital One), which have hundreds of websites with the same CSS names, but different xPaths, it should be easier to generate code.
+This version is designed as a replacement for the Selenium Factory FireFox plugin. The idea is to use CSS web elements as opposed to xPaths, as the xPaths have issues spaning multiple websites. Using web elements we can avoid these issues, and for companies (such as Capital One), which have hundreds of websites with the same web elements names, but different xPaths, it should be easier to generate code.
 
 
 Further, we created a window that enables the generation of Java based Selenium tests. These can then be added to a database and checked to avoid duplicate code. We have also enabled a pop-up where you can select the different types of applications you would like to test on. 
