@@ -10,6 +10,7 @@ Essentially, a web browser capable of recording a users actions upon clicking st
 then with a simple click of a button all of the actions are translated into java and XML!
 
 Created by Austin Walters, with help from Gaurav D. Kale
+
 During our 2014 summer internship as TDP interns with Capital One
 
 Currently in development... 
